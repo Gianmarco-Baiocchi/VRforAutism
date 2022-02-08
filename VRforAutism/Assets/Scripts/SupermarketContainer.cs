@@ -7,28 +7,37 @@ using UnityEngine;
 
 public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContainer
 {
-    [SerializeField] protected GameObject obj_;
-    [SerializeField] protected float distance_ = 0;
+    protected List<Tuple<GameObject, float>> objectsList_ = new List<Tuple<GameObject, float>>();
+    //[SerializeField] protected GameObject obj_;
+    //[SerializeField] protected float distance_ = 0;
     protected bool isFill = false;
 
-    public virtual void SetObject(GameObject obj)
+    public virtual void SetObject(GameObject obj, int index)
     {
-        if (this.isFill) //Shelves are already fill
+        if (this.objectsList_.ElementAt(index) != null && index >= this.GetShelvesNumber()) //Shelves are already fill
             return;
 
-        this.obj_ = obj;
-        if (this.obj_ != null)
+        this.objectsList_[index] = new Tuple<GameObject, float>(obj, obj.GetComponent<CapsuleCollider>().radius);
+        this.FillRack();
+    }
+
+    public void SetObjects(List<GameObject> objectsList)
+    {
+        for(int i = 0; i < Mathf.Min(objectsList.Count, this.GetShelvesNumber()); i++)
         {
-            this.distance_ = obj_.GetComponent<CapsuleCollider>().radius;
-            this.FillRack();
+            var obj = objectsList.ElementAt<GameObject>(i);
+            this.objectsList_.Add(new Tuple<GameObject, float>(obj, obj.GetComponent<CapsuleCollider>().radius * 
+                Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.z)));
         }
     }
+
+    public abstract int GetShelvesNumber();
 
     public abstract float GetLength();
 
     protected void Start()
     {
-        if (this.obj_ != null && !this.isFill)
+        if (this.objectsList_.Count != 0 && !this.isFill)
             this.FillRack();
     }
 
