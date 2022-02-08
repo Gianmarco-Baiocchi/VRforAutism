@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5062749810146367444}
   - component: {fileID: 5212698951784996615}
   m_Layer: 0
-  m_Name: Flacone Shampoo
+  m_Name: FlaconeShampoo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

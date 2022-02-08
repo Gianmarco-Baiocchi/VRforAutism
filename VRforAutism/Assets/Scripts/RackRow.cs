@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class RackRow : MonoBehaviour
 {
+    [SerializeField] private string type;
     [SerializeField] private int nRacks_ = 0;
     [SerializeField] private GameObject rackPrefab_;
-    [SerializeField] private float distance_ = 0.1f;
-    private List<string> objects_ = new List<string>() { "Prefabs/Bottiglietta", "Prefabs/Flacone Shampoo", "Prefabs/Lattina 1", 
-                                                         "Prefabs/Bottiglietta", "Prefabs/Flacone Shampoo" };
+    [SerializeField] private float distance_ = 0.05f;
+    private List<string> objects_ = new List<string>();
 
     // Start is called before the first frame update
     void Start()
     {
-        if(this.rackPrefab_ == null)
+        this.objects_ = (List<string>)typeof(SupermarketItems).GetMethod("getItemsList").MakeGenericMethod(System.Type.GetType(type)).Invoke(null, null);
+        if (this.rackPrefab_ == null)
             this.rackPrefab_ = (GameObject) Resources.Load("Prefabs/SupermarketRack");
         this.createRacks();
     }
