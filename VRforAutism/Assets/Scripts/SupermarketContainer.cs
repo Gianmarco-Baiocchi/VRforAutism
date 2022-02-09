@@ -17,7 +17,7 @@ public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContaine
         if (this.objectsList_.ElementAt(index) != null && index >= this.GetShelvesNumber()) //Shelves are already fill
             return;
 
-        this.objectsList_[index] = new Tuple<GameObject, float>(obj, obj.GetComponent<CapsuleCollider>().radius);
+        this.objectsList_[index] = new Tuple<GameObject, float>(obj, this.GetObjectSize(obj));
         this.FillRack();
     }
 
@@ -26,8 +26,7 @@ public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContaine
         for(int i = 0; i < Mathf.Min(objectsList.Count, this.GetShelvesNumber()); i++)
         {
             var obj = objectsList.ElementAt<GameObject>(i);
-            this.objectsList_.Add(new Tuple<GameObject, float>(obj, obj.GetComponent<CapsuleCollider>().radius * 
-                Mathf.Max(obj.transform.localScale.x, obj.transform.localScale.z)));
+            this.objectsList_.Add(new Tuple<GameObject, float>(obj, this.GetObjectSize(obj)));
         }
     }
 
@@ -44,4 +43,18 @@ public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContaine
     protected void Update() { }
 
     protected abstract void FillRack();
+    
+    protected float GetObjectSize(GameObject obj)
+    {
+        if (obj.GetComponent<CapsuleCollider>())
+        {
+            return obj.GetComponent<CapsuleCollider>().radius * obj.transform.localScale.x;
+        }
+        else if (obj.GetComponent<BoxCollider>())
+        {
+            return obj.GetComponent<BoxCollider>().size.x * obj.transform.localScale.x;
+        }
+        //No capsule or box collider
+        return 0;
+    }
 }
