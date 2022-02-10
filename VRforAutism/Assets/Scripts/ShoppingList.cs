@@ -23,7 +23,7 @@ public class ShoppingList
         return _itemList.FindAll(item => !item.IsAllTaken);
     }
 
-    public bool isShoppingFinished()
+    public bool IsShoppingFinished()
     {
         /*string text = ""; //DEBUG
         ItemsToTake().ForEach(list => text += list.Item.ItemName + " ");
@@ -45,13 +45,15 @@ public class ShoppingList
     private List<ItemOnList> GenerateItemList()
     {
         var list = new List<ItemOnList>();
-        var itemsPoints = GameObject.FindGameObjectsWithTag("ItemsPoint");
-        int[] randIndexValues = new int[Random.Range(1, itemsPoints.Length)];
-        int i = 0;
-        int randIndex;
+        
+        //prendo tutti gli ItemsPoint dove il numero di prodotti non è zero
+        var itemsPoints = GameObject.FindGameObjectsWithTag("ItemsPoint").Where(o => o.GetComponentInChildren<Item>() != null).ToList();
+        
+        var randIndexValues = new int[Random.Range(1, itemsPoints.Count)];
+        var i = 0;
         while (i < randIndexValues.Length)
         {
-            randIndex = Random.Range(1, itemsPoints.Length);
+            var randIndex = Random.Range(1, itemsPoints.Count);
             if (!randIndexValues.Contains(randIndex))
             {
                 randIndexValues[i] = randIndex;
@@ -59,7 +61,7 @@ public class ShoppingList
                 list.Add(new ItemOnList(itemsPoints[randIndex].GetComponentInChildren<Item>(), nItem:Random.Range(1, 4)));
             }
         }
-        return list;
+        return list; //TODO: se finiscono tutti gli oggetti all'interno del supermercato, il programma va in errore
     }
 
     private ItemOnList ItemInTheList(Item item)

@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using Attributes;
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class Person : MonoBehaviour
@@ -12,25 +8,22 @@ public class Person : MonoBehaviour
         nameof(_isUserCharacter)), SerializeField] private Cart _cart;
     [ShowIf(ActionOnConditionFail.DontDraw, ConditionOperator.And, 
          nameof(_isUserCharacter)), SerializeField] private ShoppingList _shoppingList;
-    private string _username;
-    
+    [SerializeField] private string _username;
+    private bool _isMoving;
     public Cart Cart => _cart;
-    public ShoppingList ShoppingList => _shoppingList;
+
+    public string Username => _username;
+    public ShoppingList ShoppingList { get => _shoppingList; set => _shoppingList = value; }
+    
+    public bool IsMoving  { get => _isMoving; set => _isMoving = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        _username = "User1";
         if (!_isUserCharacter)
         {
-            _shoppingList = new ShoppingList();
+            ShoppingList = new ShoppingList();
         }
+        _isMoving = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
 }

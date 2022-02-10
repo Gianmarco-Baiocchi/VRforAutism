@@ -1,8 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 
 public class FPSInteractionManager : MonoBehaviour
@@ -28,14 +26,17 @@ public class FPSInteractionManager : MonoBehaviour
     private Cart _userCart;
     private ShoppingList _userShoppingList;
 
-
-
+    private CashRegister _actualCashRegister;
+    private bool _queueEntered;
+    
     void Start()
     {
         _fpsController = GetComponent<CharacterController>();
         _person = GetComponent<Person>();
         _userCart = _person.Cart;
         _userShoppingList = _person.ShoppingList;
+
+        _queueEntered = false;
     }
 
     void Update()
@@ -73,14 +74,44 @@ public class FPSInteractionManager : MonoBehaviour
             Drop();
             _grabbedList = null;
         }
+        
+        CollisionWithQueuePosition();
+    }
+
+    private void CollisionWithQueuePosition()
+    {
+        var ray = new Ray(transform.position, -transform.up);
+        if (Physics.Raycast(ray, out var hit, 1.5f))
+        {
+            if(!_queueEntered && hit.transform.gameObject.CompareTag("QueuePosition"))
+            {
+                var queuePoint = hit.transform.gameObject;
+                foreach (var cashRegister in  FindObjectsOfType<CashRegister>())
+                {
+                    if (cashRegister.ContainQueuePoint(queuePoint))
+                    {
+                        _actualCashRegister = cashRegister;
+                        break;
+                    }
+                }
+                if (_actualCashRegister != null)
+                {
+                    _actualCashRegister.AddPersonAtBottom(GetInstanceID(), true);
+                    _queueEntered = true;
+                }
+            }
+            else if (_actualCashRegister != null && !hit.transform.gameObject.CompareTag("QueuePosition"))
+            {
+                _actualCashRegister.RemovePlayerAndScroll();
+                _queueEntered = false;
+            }
+        }
     }
 
     private void CheckInteraction()
     {
-        Ray ray = new Ray(_rayOrigin, _fpsCameraT.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, _interactionDistance))
+        var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
+        if (Physics.Raycast(ray, out var hit, _interactionDistance))
         {
             //Check if is interactable
             _pointingInteractable = hit.transform.GetComponent<Interactable>();
@@ -128,7 +159,7 @@ public class FPSInteractionManager : MonoBehaviour
         _grabbedObject.transform.parent = _grabbedObject.OriginalParent;
         if (_grabbedObject.GetComponent<ItemGrabbable>() != null)
         {
-            ItemGrabbable grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
+            var grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
             grabbedItem.Drop(IsFacingUserCart(), _userCart, _userShoppingList);
             grabbedItem = null;
             ShowLabelInfo(false);
@@ -159,14 +190,10 @@ public class FPSInteractionManager : MonoBehaviour
 
     private bool IsFacingUserCart()
     {
-        Ray ray = new Ray(_rayOrigin, _fpsCameraT.forward);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, _cartDistance))
-        {
-            Cart facingCart = hit.transform.gameObject.GetComponent<Cart>();
-            return facingCart == _userCart;
-        }
-        return false;
+        var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
+        if (!Physics.Raycast(ray, out var hit, _cartDistance)) return false;
+        var facingCart = hit.transform.gameObject.GetComponent<Cart>();
+        return facingCart == _userCart;
     }
     
     private void ShowLabelInfo(bool state)
