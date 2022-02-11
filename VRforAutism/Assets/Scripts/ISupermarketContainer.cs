@@ -31,4 +31,9 @@ public interface ISupermarketContainer
     /// </summary>
     /// <returns>the container's length.</returns>
     float GetLength();
+
+    /// <summary>
+    /// Fills the cointainer with all the objects added.
+    /// </summary>
+    void Fill();
 }

@@ -39,7 +39,12 @@ enum TempItems
 {
     Bottiglietta,
     FlaconeShampoo,
-    Lattina
+    Lattina,
+    Biscuit,
+    Orange,
+    Water,
+    Apple,
+    Soda
 }
 
 static class SupermarketItems

@@ -19,7 +19,7 @@ public class TwoSideRack : SupermarketContainer
 
     public override int GetShelvesNumber()
     {
-        return this.transform.GetChild(1).childCount;
+        return this.transform.GetChild(1).childCount * 2;
     }
 
     public override float GetLength()
@@ -38,56 +38,55 @@ public class TwoSideRack : SupermarketContainer
         {
             var obj = base.objectsList_.ElementAt(i).Item1;
             var objectSize = base.objectsList_.ElementAt(i).Item2;
-            if (objectSize == 0)
+            if (objectSize == Vector3.zero)
                 break;
             
-            var distance = base.objectsList_.ElementAt(i).Item2;
-            var shelf = shelves.GetChild(i);
-            int n = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.x / ((objectSize + distance) * 2));
+            var shelf = shelves.GetChild(i % shelves.childCount);
+            int n = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.x / (objectSize.x + base._distance.x * 2));
+            int m = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.z / ((objectSize.z + base._distance.z * 2) * 2));
             Vector3 start_pos = shelf.position;
             Vector3 rotation = this.transform.rotation.eulerAngles;
 
-            //Front shelf point
-            var frontItemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
-                    start_pos + new Vector3(shelf.GetComponent<BoxCollider>().size.x / 2, 0, 0), this.transform.rotation);
-            frontItemsPoint.name = obj.name;
-            //Back shelf point
-            var backItemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
-                    start_pos - new Vector3(shelf.GetComponent<BoxCollider>().size.x / 2, 0, 0), this.transform.rotation);
-            backItemsPoint.name = obj.name;
+            GameObject itemsPoint;
+            if(i < shelves.childCount)
+            {
+                //Front shelf point
+                itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
+                        start_pos + new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z / 2), this.transform.rotation);
+                itemsPoint.name = obj.name + "s";
+
+            } 
+            else
+            {
+                //Back shelf point
+                itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
+                        start_pos - new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z / 2), this.transform.rotation);
+                itemsPoint.name = obj.name + "s";
+            }
 
             for (int j = 0; j < n; j++)
             {
-                //Front shelf
-                //First row
-                var bottle = Instantiate<GameObject>(obj);
-                Vector3 pos = start_pos + new Vector3(((objectSize + distance) * 2 * j), 0, 0);
-                pos.x -= (shelf.GetComponent<BoxCollider>().size.x / 2 - objectSize - distance);
-                pos.z += shelf.GetComponent<BoxCollider>().size.z / 8;
-                bottle.transform.position = pos;
-                bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
-                bottle.transform.SetParent(frontItemsPoint.transform);
-                //Second row
-                bottle = Instantiate<GameObject>(obj);
-                pos.z += shelf.GetComponent<BoxCollider>().size.z / 4;
-                bottle.transform.position = pos;
-                bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
-                bottle.transform.SetParent(frontItemsPoint.transform);
-
-
-                //Back shelf
-                //First row
-                bottle = Instantiate<GameObject>(obj);
-                pos.z = start_pos.z - shelf.GetComponent<BoxCollider>().size.z / 8;
-                bottle.transform.position = pos;
-                bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
-                bottle.transform.SetParent(backItemsPoint.transform);
-                //Second row
-                bottle = Instantiate<GameObject>(obj);
-                pos.z -= shelf.GetComponent<BoxCollider>().size.z / 4;
-                bottle.transform.position = pos;
-                bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
-                bottle.transform.SetParent(backItemsPoint.transform);
+                for(int l = 0; l < m; l++)
+                {
+                    var bottle = Instantiate<GameObject>(obj);
+                    Vector3 pos = start_pos;
+                    if(i < shelves.childCount)
+                    {
+                        //Front shelf
+                        pos += new Vector3(((objectSize.x + base._distance.x * 2) * j), 0, (objectSize.z + base._distance.z * 2) * l);
+                        pos.z += objectSize.z + base._distance.z;
+                    }
+                    else
+                    {
+                        //Back shelf
+                        pos += new Vector3(((objectSize.x + base._distance.x * 2) * j), 0, -(objectSize.z + base._distance.z * 2) * l);
+                        pos.z -= objectSize.z + base._distance.z;
+                    }
+                    pos.x -= ((shelf.GetComponent<BoxCollider>().size.x / 2) - objectSize.x/2 - base._distance.x);
+                    bottle.transform.position = pos;
+                    bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
+                    bottle.transform.SetParent(itemsPoint.transform);
+                }
             }
         }
         base.isFill = true;

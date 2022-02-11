@@ -11,7 +11,7 @@ public class RackRow : MonoBehaviour
     private List<string> objects_ = new List<string>();
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         this.objects_ = (List<string>)typeof(SupermarketItems).GetMethod("getItemsList").MakeGenericMethod(System.Type.GetType(type)).Invoke(null, null);
         if (this.rackPrefab_ == null)
@@ -39,7 +39,8 @@ public class RackRow : MonoBehaviour
             rack.transform.position = pos;
             rack.transform.RotateAround(this.transform.position, new Vector3(0, 1, 0), this.transform.rotation.eulerAngles.y);
             rack.GetComponent<ISupermarketContainer>().SetObjects(this.objects_.ConvertAll(s => (GameObject)Resources.Load(s, typeof(GameObject))));
-            
+            rack.GetComponent<ISupermarketContainer>().Fill();
+
             objIndex = ++objIndex % this.objects_.Count;
         }
     }
