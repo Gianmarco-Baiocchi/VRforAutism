@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 public class ShoppingListGUI : MonoBehaviour
 {
@@ -12,9 +13,8 @@ public class ShoppingListGUI : MonoBehaviour
     }
     public void WriteText()
     {
-        var text = "";
-        _shoppingList.ItemList.ForEach(itemOnList => { text += ("- " + itemOnList.Info) + "\n";});
-        GetComponentsInChildren<TextMeshProUGUI>()[1].text = text;
+        //_shoppingList.ItemList.ForEach(itemOnList => { text += ("- " + itemOnList.Info) + "\n";});
+        GetComponentsInChildren<TextMeshProUGUI>()[1].text = _shoppingList.ItemList.Aggregate("", (text, itemOnList) => text + ("- " + itemOnList.Info + "\n"));
     }
     
     public void SetState(bool state)
