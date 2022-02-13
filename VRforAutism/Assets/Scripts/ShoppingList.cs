@@ -69,7 +69,7 @@ public class ShoppingList
         return _itemList.Find(itemOnList => itemOnList.Item.ItemName.Equals(item.ItemName));
     }
     
-    private bool IsItemOnList(Item item)
+    public bool IsItemOnList(Item item)
     {
         return ItemInTheList(item) != null;
     }

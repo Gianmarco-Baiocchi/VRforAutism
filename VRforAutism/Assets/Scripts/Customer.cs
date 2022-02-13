@@ -5,12 +5,15 @@ using UnityEngine.AI;
 
 [RequireComponent (typeof(NavMeshAgent))]
 [RequireComponent (typeof(Person))]
+[RequireComponent (typeof(AudioSource))]
 
 public class Customer : MonoBehaviour
 {
     [SerializeField] private float _distanceFromOtherPerson;
     [Range(0,360)][SerializeField] private float _viewAngle;
     [SerializeField] private float _paymentDuration;
+    [SerializeField] private AudioClip _walkingClip;
+    [SerializeField] private AudioClip _greetingClip;
     
     private GameObject _target;
     private NavMeshAgent _navMeshAgent;
@@ -24,6 +27,9 @@ public class Customer : MonoBehaviour
     private ItemOnList _itemsToBuy;
     private CashRegister _assignedCashRegister;
     private float _paymentTime;
+
+    private AudioSource _audioSource;
+    private bool _alreadyGretted;
     
     private FiniteStateMachine<Customer> _stateMachine;
 
@@ -38,6 +44,8 @@ public class Customer : MonoBehaviour
 
         _directionToTarget = new Vector3();
         _lookingDirection = new Vector3();
+
+        _audioSource = GetComponent<AudioSource>();
         
         _velocity = _navMeshAgent.velocity;
         ResetVariables();
@@ -221,6 +229,29 @@ public class Customer : MonoBehaviour
         if (_target != null)
             _navMeshAgent.SetDestination(_target.transform.position);
     }
+
+    public void GreetingSound()
+    {
+        Debug.Log("gr." + _alreadyGretted + "  " + IsLookingAtPlayer() );
+        if (_alreadyGretted || !IsLookingAtPlayer()) return;
+        _audioSource.clip = _greetingClip;
+        _audioSource.loop = false;
+        _audioSource.Play();
+        _alreadyGretted = true;
+    }
+    
+    public void WalkingSound()
+    {
+        if (_audioSource.clip == _walkingClip) return;
+        _audioSource.clip = _walkingClip;
+        _audioSource.loop = true;
+        _audioSource.Play();
+    }
+
+    public void StopAudio()
+    {
+        _audioSource.Stop();
+    }
     
     /* PRIVATE METHODS------------------------------------------------------------------------------------------------*/
     private GameObject GetNewItemTarget()
@@ -229,7 +260,7 @@ public class Customer : MonoBehaviour
         
         _itemsToBuy = _person.ShoppingList.ItemsToTake()[0];
         var transforms = _itemsToBuy.Item.GetComponentsInParent<Transform>();
-        Debug.Log("name" + _person.Username + "   " + transforms[0].gameObject.name);
+        //Debug.Log("name" + _person.Username + "   " + transforms[0].gameObject.name);
         return transforms[0].gameObject; //[1] indicate the ItemPoint of the item 
     }
 
@@ -266,6 +297,7 @@ public class Customer : MonoBehaviour
     {
         _assignedCashRegister = null;
         _paymentTime = 0.0f;
+        _alreadyGretted = false;
     }
     
     private bool DetectingPersonObstacle(Vector3 directionToTarget)
@@ -280,6 +312,15 @@ public class Customer : MonoBehaviour
         
         //CHECK IF THERE ARE NO OBSTACLES
         var ray = new Ray(transform.position, directionToTarget.normalized);
+        if (!Physics.Raycast(ray, out var hit, _distanceFromOtherPerson)) return false;
+        var obstacle = hit.transform.GetComponent<Person>();
+        return (obstacle != null);
+    }
+
+    private bool IsLookingAtPlayer()
+    {
+        var directionToPlayer = GameObject.FindWithTag("Player").transform.position - transform.position;
+        var ray = new Ray(transform.position, directionToPlayer.normalized);
         if (!Physics.Raycast(ray, out var hit, _distanceFromOtherPerson)) return false;
         var obstacle = hit.transform.GetComponent<Person>();
         return (obstacle != null);
@@ -308,6 +349,7 @@ public class BeginningState : State
     {
         _npc.StopAgent(false);
         _npc.MoveToSupermarketEntrance();
+        _npc.WalkingSound();
     }
 
     public override void Tik()
@@ -335,6 +377,7 @@ public class MovingToTargetItemState : State
     {
         _npc.StopAgent(false);
         _npc.MoveToItemInList();
+        _npc.WalkingSound();
     }
 
     public override void Tik()
@@ -359,6 +402,7 @@ public class TargetItemReachedState : State
     {
         _npc.SetDirectionToTarget();
         _npc.StopAgent(true);
+        _npc.StopAudio();
     }
 
     public override void Tik()
@@ -386,6 +430,7 @@ public class StopState : State
     public override void Enter()
     {
         _npc.StopAgent(true);
+        _npc.GreetingSound();
     }
 
     public override void Tik()
@@ -413,6 +458,7 @@ public class MovingToCashRegisterState : State
         _npc.StopAgent(false);
         _npc.AssignCashRegister();
         _npc.MoveToCashRegisterQueuePosition();
+        _npc.WalkingSound();
     }
 
     public override void Tik()
@@ -438,6 +484,7 @@ public class QueuingState : State
     public override void Enter()
     {
         _npc.AddCustomerToQueue();
+        _npc.StopAudio();
     }
 
     public override void Tik()
