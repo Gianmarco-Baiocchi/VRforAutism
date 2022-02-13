@@ -1167,10 +1167,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4306814834901206695}
   - component: {fileID: 7864636878909512925}
+  - component: {fileID: -158316719787501770}
   - component: {fileID: -344122987382617580}
   - component: {fileID: 5752148020870412989}
   - component: {fileID: 6885153300759567780}
-  - component: {fileID: -158316719787501770}
   m_Layer: 0
   m_Name: woman@walk
   m_TagString: Untagged
@@ -1219,6 +1219,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &-158316719787501770
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3499070318748310557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3772068
+  m_Height: 1.7289526
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.89552367, z: 0}
 --- !u!195 &-344122987382617580
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1271,20 +1285,6 @@ MonoBehaviour:
   _distanceFromOtherPerson: 8
   _viewAngle: 100
   _paymentDuration: 5
---- !u!136 &-158316719787501770
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3499070318748310557}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.3772068
-  m_Height: 1.7289526
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.89552367, z: 0}
 --- !u!1 &3502461533838542699
 GameObject:
   m_ObjectHideFlags: 0

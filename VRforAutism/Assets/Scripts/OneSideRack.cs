@@ -48,8 +48,11 @@ public class OneSideRack : SupermarketContainer
             int m = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.z / (objectSize.z + base._distance.z * 2));
             Vector3 start_pos = shelf.position;
             //Items point
-            var itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
-                    start_pos + new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z), shelf.transform.rotation);
+            //var itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
+            //        start_pos + new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z), this.transform.rotation);
+            var itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Containers/ItemsPointEmpty"));
+            itemsPoint.transform.position = start_pos - new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z);
+            itemsPoint.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
             itemsPoint.name = obj.name + "s";
             for (int j = 0; j < n; j++)
             {

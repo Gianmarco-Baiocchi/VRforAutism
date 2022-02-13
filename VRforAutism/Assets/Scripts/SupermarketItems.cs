@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 enum FruitItems
 {
-    apple,
-    pear
+    Apple,
+    //Orange,
 }
 
 enum VegetablesItems
@@ -25,31 +25,36 @@ enum FridgeItems
 
 enum SweetItems
 {
-    biscuits,
-    sugar
+    Biscuit,
 }
 
 enum DrinkItems
 {
-    water,
-    tea
+    Bottiglietta,
+    //Soda,
+    //Lattina,
+}
+
+enum BeautyItems
+{
+    FlaconeShampoo,
 }
 
 enum TempItems
 {
     Bottiglietta,
-    FlaconeShampoo,
-    Lattina,
-    Biscuit,
-    Orange,
-    Water,
-    Apple,
-    Soda
+    //FlaconeShampoo,
+    //Lattina,
+    //Biscuit,
+    //Orange,
+    //Water,
+    //Apple,
+    //Soda
 }
 
 static class SupermarketItems
 {
     public static List<string> getItemsList<T> () {
-        return Enum.GetValues(typeof(T)).Cast<T>().Select(e => "Prefabs/" + e.ToString()).ToList();
+        return Enum.GetValues(typeof(T)).Cast<T>().Select(e => "Prefabs/Items/" + e.ToString()).ToList();
     }
 }
