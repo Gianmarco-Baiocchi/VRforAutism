@@ -56,6 +56,7 @@ public class WinMenuGUI : MonoBehaviour
     private string TotalDescription()
     {
         float total = 0.0f;
+        Debug.Log("item:" + _player.ShoppingList.ItemList[0].Item.Price + "   " + _player.ShoppingList.ItemList[0].NTaken);
         _player.ShoppingList.ItemList.ForEach(item => total += item.Item.Price * item.NTaken);
         _player.ExtraTakenItems?.Keys.ToList().ForEach(k => total += k.Price * _player.ExtraTakenItems[k]);
         Debug.Log(total);
