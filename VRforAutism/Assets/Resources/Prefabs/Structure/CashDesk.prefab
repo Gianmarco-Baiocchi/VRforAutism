@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1481468878294319719}
   m_Layer: 0
   m_Name: CashRegisterPoint
-  m_TagString: CashRegistersPoint
+  m_TagString: QueuePosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,6 +364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925446743239006073}
+  - component: {fileID: 5721765119256841155}
   m_Layer: 0
   m_Name: CashDesk
   m_TagString: Untagged
@@ -387,6 +388,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!208 &5721765119256841155
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539630292095710716}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 4.225, y: 1.9, z: 1.27}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.87, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3788729077540624045
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7096063848931082010}
+  - component: {fileID: 8039051586592535906}
   m_Layer: 0
   m_Name: cassa_supermarket
   m_TagString: Untagged
@@ -919,3 +937,16 @@ Transform:
   m_Father: {fileID: 925446743239006073}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8039051586592535906
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7580007691686733216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.956438, y: 6.4842176, z: 4.618275}
+  m_Center: {x: 0.016477576, y: 2.1466959, z: 0.022900838}
