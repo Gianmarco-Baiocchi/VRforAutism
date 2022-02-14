@@ -7,31 +7,33 @@ using UnityEngine;
 
 public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContainer
 {
-    protected List<Tuple<GameObject, Vector3>> objectsList_ = new List<Tuple<GameObject, Vector3>>();
+    protected List<Tuple<GameObject, Vector3>> _objectsList = new List<Tuple<GameObject, Vector3>>();
     protected Vector3 _distance = new Vector3(0.03f, 0.01f, 0.03f);
-    protected bool isFill = false;
+    protected bool _isFill = false;
 
     public virtual void SetObject(GameObject obj, int index)
     {
-        if (this.objectsList_.ElementAt(index) != null && index >= this.GetShelvesNumber()) //Shelves are already fill
+        if (this._objectsList.ElementAt(index) != null && index >= this.GetShelvesNumber()) //Shelves are already fill
             return;
 
-        this.objectsList_[index] = new Tuple<GameObject, Vector3>(obj, this.GetObjectSize(obj));
+        this._objectsList[index] = new Tuple<GameObject, Vector3>(obj, this.GetObjectSize(obj));
         this.FillRack();
     }
 
-    public void SetObjects(List<GameObject> objectsList)
+    public int SetObjects(List<GameObject> objectsList)
     {
-        for(int i = 0; i < Mathf.Min(objectsList.Count, this.GetShelvesNumber()); i++)
+        int i;
+        for(i = 0; i < Mathf.Min(objectsList.Count, this.GetShelvesNumber()); i++)
         {
             var obj = objectsList.ElementAt<GameObject>(i);
-            this.objectsList_.Add(new Tuple<GameObject, Vector3>(obj, this.GetObjectSize(obj)));
+            this._objectsList.Add(new Tuple<GameObject, Vector3>(obj, this.GetObjectSize(obj)));
         }
+        return i;
     }
 
     public void Fill()
     {
-        if (this.objectsList_.Count != 0 && !this.isFill)
+        if (this._objectsList.Count != 0 && !this._isFill)
             this.FillRack();
     }
 
@@ -41,7 +43,7 @@ public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContaine
 
     protected void Start()
     {
-        if (this.objectsList_.Count != 0 && !this.isFill)
+        if (this._objectsList.Count != 0 && !this._isFill)
             this.FillRack();
     }
 

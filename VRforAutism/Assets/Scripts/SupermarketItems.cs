@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 enum FruitItems
 {
     Apple,
-    //Orange,
+    Orange,
 }
 
 enum VegetablesItems
@@ -31,8 +31,8 @@ enum SweetItems
 enum DrinkItems
 {
     Bottiglietta,
-    //Soda,
-    //Lattina,
+    Soda,
+    Lattina,
 }
 
 enum BeautyItems
@@ -54,6 +54,11 @@ enum TempItems
 
 static class SupermarketItems
 {
+    /// <summary>
+    /// Gets the objects list of a specific type.
+    /// </summary>
+    /// <typeparam name="T">The type of objects.</typeparam>
+    /// <returns>the list of objects' path of a certain type.</returns>
     public static List<string> getItemsList<T> () {
         return Enum.GetValues(typeof(T)).Cast<T>().Select(e => "Prefabs/Items/" + e.ToString()).ToList();
     }

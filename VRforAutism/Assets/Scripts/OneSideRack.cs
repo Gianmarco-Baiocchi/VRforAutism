@@ -29,16 +29,16 @@ public class OneSideRack : SupermarketContainer
 
     protected override void FillRack()
     {
-        if (base.objectsList_.Count == 0 || base.isFill )
+        if (base._objectsList.Count == 0 || base._isFill )
             return;
 
         var shelves = this.transform.GetChild(1);
         Vector3 rotation = this.transform.rotation.eulerAngles;
 
-        for (int i = 0; i < base.objectsList_.Count; i++)
+        for (int i = 0; i < base._objectsList.Count; i++)
         {
-            var obj = base.objectsList_.ElementAt(i).Item1;
-            var objectSize = base.objectsList_.ElementAt(i).Item2;
+            var obj = base._objectsList.ElementAt(i).Item1;
+            var objectSize = base._objectsList.ElementAt(i).Item2;
             if (objectSize == Vector3.zero)
                 break;
 
@@ -47,9 +47,7 @@ public class OneSideRack : SupermarketContainer
                                      / (objectSize.x + base._distance.x * 2));
             int m = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.z / (objectSize.z + base._distance.z * 2));
             Vector3 start_pos = shelf.position;
-            //Items point
-            //var itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
-            //        start_pos + new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z), this.transform.rotation);
+
             var itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Containers/ItemsPointEmpty"));
             itemsPoint.transform.position = start_pos - new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z);
             itemsPoint.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
@@ -69,8 +67,6 @@ public class OneSideRack : SupermarketContainer
             }
         
         }
-
-
-        base.isFill = true;
+        base._isFill = true;
     }
 }

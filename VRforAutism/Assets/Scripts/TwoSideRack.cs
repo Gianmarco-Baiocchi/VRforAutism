@@ -29,15 +29,15 @@ public class TwoSideRack : SupermarketContainer
 
     protected override void FillRack()
     {
-        if (base.objectsList_.Count == 0)
+        if (base._objectsList.Count == 0)
             return;
 
         var shelves = this.transform.GetChild(1);
 
-        for (int i = 0; i < base.objectsList_.Count; i++)
+        for (int i = 0; i < base._objectsList.Count; i++)
         {
-            var obj = base.objectsList_.ElementAt(i).Item1;
-            var objectSize = base.objectsList_.ElementAt(i).Item2;
+            var obj = base._objectsList.ElementAt(i).Item1;
+            var objectSize = base._objectsList.ElementAt(i).Item2;
             if (objectSize == Vector3.zero)
                 break;
             
@@ -89,6 +89,6 @@ public class TwoSideRack : SupermarketContainer
                 }
             }
         }
-        base.isFill = true;
+        base._isFill = true;
     }
 }
