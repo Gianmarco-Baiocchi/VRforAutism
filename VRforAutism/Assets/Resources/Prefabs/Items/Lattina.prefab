@@ -114,9 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ad878cf895aa7241a5683125f3c582c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _price: 0
-  _itemName: 
-  category: 0
+  _price: 1
+  _itemName: Tuna
+  category: 3
 --- !u!114 &5641408175893210854
 MonoBehaviour:
   m_ObjectHideFlags: 0

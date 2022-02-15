@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent (typeof(Item))]
 public class ItemGrabbable : Grabbable
@@ -41,7 +42,7 @@ public class ItemGrabbable : Grabbable
                     person.ShoppingList.ItemTaken(_item);
                 else
                     person.AddExtraItem(_item);
-                _item.GetComponent<Renderer>().enabled = false;
+                new List<Renderer>(_item.GetComponentsInChildren<Renderer>()).ForEach(r => r.enabled = false);
             }
             else
             {

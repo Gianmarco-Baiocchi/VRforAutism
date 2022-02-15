@@ -110,7 +110,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isUserCharacter: 1
-  _cart: {fileID: 0}
   _username: 
 --- !u!208 &3269496869008485506
 NavMeshObstacle:

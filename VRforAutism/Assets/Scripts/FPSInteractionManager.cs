@@ -26,7 +26,7 @@ public class FPSInteractionManager : MonoBehaviour
     private Person _person;
     private Grabbable _grabbedObject = null;
     private Grabbable _grabbedList = null;
-    private Cart _userCart;
+    //private Cart _userCart;
     private ShoppingList _userShoppingList;
 
     private CashRegister _actualCashRegister;
@@ -36,7 +36,7 @@ public class FPSInteractionManager : MonoBehaviour
     {
         _fpsController = GetComponent<CharacterController>();
         _person = GetComponent<Person>();
-        _userCart = _person.Cart;
+        //_userCart = _person.Cart;
         _userShoppingList = _person.ShoppingList;
         ShowLabelInfo(false);
 
@@ -214,13 +214,13 @@ public class FPSInteractionManager : MonoBehaviour
         Debug.DrawRay(_rayOrigin, _fpsCameraT.forward * _interactionDistance, Color.red);
     }
 
-    private bool IsFacingUserCart()
-    {
-        var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
-        if (!Physics.Raycast(ray, out var hit, _cartDistance)) return false;
-        var facingCart = hit.transform.gameObject.GetComponent<Cart>();
-        return facingCart == _userCart;
-    }
+    //private bool IsFacingUserCart()
+    //{
+    //    var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
+    //    if (!Physics.Raycast(ray, out var hit, _cartDistance)) return false;
+    //    var facingCart = hit.transform.gameObject.GetComponent<Cart>();
+    //    return facingCart == _userCart;
+    //}
     
     private void ShowLabelInfo(bool state)
     {

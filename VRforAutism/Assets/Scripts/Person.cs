@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Person : MonoBehaviour
 {
-    [SerializeField] private bool _isUserCharacter;
-    [ShowIf(ActionOnConditionFail.DontDraw, ConditionOperator.And, 
-        nameof(_isUserCharacter)), SerializeField] private Cart _cart;
-    [ShowIf(ActionOnConditionFail.DontDraw, ConditionOperator.And, 
-         nameof(_isUserCharacter)), SerializeField] private ShoppingList _shoppingList;
+//    [SerializeField] private bool _isUserCharacter;
+    //[ShowIf(ActionOnConditionFail.DontDraw, ConditionOperator.And, 
+    //    nameof(_isUserCharacter)), SerializeField] private Cart _cart;
     [SerializeField] private string _username;
     private bool _isMoving;
+    private ShoppingList _shoppingList;
 
-    public bool IsUserCharacter => _isUserCharacter;
-    public Cart Cart => _cart;
+    //public bool IsUserCharacter => _isUserCharacter;
+    //public Cart Cart => _cart;
 
     public string Username => _username;
     public ShoppingList ShoppingList { get => _shoppingList; set => _shoppingList = value; }
@@ -25,10 +24,7 @@ public class Person : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!_isUserCharacter)
-        {
-            ShoppingList = new ShoppingList();
-        }
+        ShoppingList = new ShoppingList();
         ExtraTakenItems = new Dictionary<Item, int>();
         _isMoving = true;
     }
