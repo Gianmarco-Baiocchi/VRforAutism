@@ -8,6 +8,8 @@ enum FruitItems
 {
     Apple,
     Orange,
+    Peach,
+    Ananas,
 }
 
 enum VegetablesItems
@@ -30,7 +32,8 @@ enum SweetItems
 
 enum DrinkItems
 {
-    Bottiglietta,
+    Water,
+    Tea,
     Soda,
     Lattina,
 }
