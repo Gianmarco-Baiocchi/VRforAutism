@@ -42,6 +42,12 @@ public class ShoppingList
             ItemInTheList(item).removeOne();
     }
 
+    public void TakeNItem(Item item)
+    {
+        if (IsItemOnList(item))
+            ItemInTheList(item).takeAll();
+    }
+
     private List<ItemOnList> GenerateItemList()
     {
         var list = new List<ItemOnList>();
@@ -69,7 +75,7 @@ public class ShoppingList
         return _itemList.Find(itemOnList => itemOnList.Item.ItemName.Equals(item.ItemName));
     }
     
-    private bool IsItemOnList(Item item)
+    public bool IsItemOnList(Item item)
     {
         return ItemInTheList(item) != null;
     }

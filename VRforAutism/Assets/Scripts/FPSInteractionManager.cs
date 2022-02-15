@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+
+[RequireComponent (typeof(Person))]
 
 public class FPSInteractionManager : MonoBehaviour
 {
@@ -35,6 +38,7 @@ public class FPSInteractionManager : MonoBehaviour
         _person = GetComponent<Person>();
         _userCart = _person.Cart;
         _userShoppingList = _person.ShoppingList;
+        ShowLabelInfo(false);
 
         _queueEntered = false;
     }
@@ -61,7 +65,10 @@ public class FPSInteractionManager : MonoBehaviour
                     CheckInteraction();
 
                 if (_grabbedObject != null && Input.GetMouseButtonDown(0))
-                    Drop();
+                    DropItem(false);
+                
+                if (_grabbedObject != null && Input.GetMouseButtonDown(2))
+                    DropItem(true);
 
                 UpdateUITarget();
 
@@ -98,6 +105,10 @@ public class FPSInteractionManager : MonoBehaviour
                 {
                     _actualCashRegister.AddPersonAtBottom(GetInstanceID(), true);
                     _queueEntered = true;
+                    if (_actualCashRegister.IsFirst(GetInstanceID()))
+                    {
+                        FindObjectOfType<WinMenuGUI>().ShowMenu();
+                    }
                 }
             }
             else if (_actualCashRegister != null && !hit.transform.gameObject.CompareTag("QueuePosition"))
@@ -160,12 +171,27 @@ public class FPSInteractionManager : MonoBehaviour
         if (_grabbedObject.GetComponent<ItemGrabbable>() != null)
         {
             var grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
-            grabbedItem.Drop(IsFacingUserCart(), _userCart, _userShoppingList);
+            //grabbedItem.Drop(IsFacingUserCart(), _userCart, _userShoppingList);
             grabbedItem = null;
             ShowLabelInfo(false);
         }
         else _grabbedObject.Drop();
 
+        _target.enabled = true;
+        _grabbedObject = null;
+    }
+    
+    private void DropItem(bool isTaken)
+    {
+        if (_grabbedObject == null)
+            return;
+        _grabbedObject.transform.parent = _grabbedObject.OriginalParent;
+        if (_grabbedObject.GetComponent<ItemGrabbable>() != null)
+        {
+            var grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
+            grabbedItem.Drop(_person, isTaken);
+            ShowLabelInfo(false);
+        }
         _target.enabled = true;
         _grabbedObject = null;
     }
@@ -199,11 +225,8 @@ public class FPSInteractionManager : MonoBehaviour
     private void ShowLabelInfo(bool state)
     {
         _infoLabel.GetComponent<Image>().enabled = state;
-        var textsComponents = _infoLabel.GetComponentsInChildren<TextMeshProUGUI>();
-        foreach (var textComponent in textsComponents)
-        {
-            textComponent.enabled = state;
-        }
+        _infoLabel.GetComponentsInChildren<TextMeshProUGUI>().ToList().ForEach(component => component.enabled = state);
+        _infoLabel.GetComponentsInChildren<Image>().ToList().ForEach(component => component.enabled = state);
     }
     
     private void SetLabelInfoText(string mainText, string secondaryText)

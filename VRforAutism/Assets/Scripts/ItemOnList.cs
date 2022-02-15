@@ -1,17 +1,17 @@
 ﻿public class ItemOnList
 {
-    private readonly Item _item;
     private readonly int _nItem;
     private int _nTaken;
 
     public bool IsAllTaken { get; set; }
 
-    public Item Item => _item;
-    public string Info => $"{_item.ItemName}  {_nTaken}/{_nItem}";
+    public Item Item { get; }
+    public int NTaken => _nTaken;
+    public string Info => $"{Item.ItemName}  {_nTaken}/{_nItem}";
 
-    public ItemOnList(Item item, bool isAllTaken = false, int nItem = 1)
+    public ItemOnList(Item item, int nTaken = 0, bool isAllTaken = false, int nItem = 1)
     {
-        _item = item;
+        Item = item;
         IsAllTaken = isAllTaken;
         _nItem = nItem;
         _nTaken = 0;
@@ -27,6 +27,13 @@
                 IsAllTaken = true;
             }
         }
+    }
+    
+    public void takeAll()
+    {
+        while (_nTaken != _nItem)
+            _nTaken++;
+        IsAllTaken = true;
     }
 
     public void removeOne()

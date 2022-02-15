@@ -53,7 +53,7 @@ public class CashRegister : MonoBehaviour
             queuePosition.PersonId = personInstanceId;
             queuePosition.IsPlayer = isUserPlayer;
         }
-        Debug.Log("ADD-> " + QueuePositionDebug());
+        //Debug.Log("ADD-> " + QueuePositionDebug());
     }
 
     /*Funzione che aggiunge un utente nell'ultima posizone della lista, e crea una nuova posizione vuota dietro di lui*/
@@ -72,7 +72,7 @@ public class CashRegister : MonoBehaviour
         {
             index = _queuePositions.IndexOf(GetFirstFreeQueuePosition());
             var stepLength = GetNumberConsecutiveFreePosition();
-            Debug.Log("rimozione! " + index + "  " + (PositionInQueue() - (index +stepLength)) + "  " + stepLength);
+            //Debug.Log("rimozione! " + index + "  " + (PositionInQueue() - (index +stepLength)) + "  " + stepLength);
             ScrollListFromIndex(index, PositionInQueue() -(index + stepLength), stepLength);
             //Adesso ho (A, B, C, -1, -1, -1)
         }
@@ -190,7 +190,7 @@ public class CashRegister : MonoBehaviour
         {
             _queuePositions[j].PersonId = FreePosition;
         }
-        Debug.Log("Scroll (" + startIndex+"" + endIndex +") -> " +QueuePositionDebug());
+        //Debug.Log("Scroll (" + startIndex+"" + endIndex +") -> " +QueuePositionDebug());
     }
 
     /*Funzione che ritorna true se tra le persone in coda c'è anche il giocatore*/
