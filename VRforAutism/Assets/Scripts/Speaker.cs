@@ -38,5 +38,5 @@ public class Speaker : MonoBehaviour
         PlayAnnounce(audioAnnounce);
         yield return new WaitForSeconds(BellSoundTime);
         PlayAnnounce(audioClip);
-    }
+    } 
 }
