@@ -18,7 +18,8 @@ public interface ISupermarketContainer
     /// Sets a list of objects in the shelves and it instances all possible units.
     /// </summary>
     /// <param name="objectsList">An ordered list of objects to put on shelves.</param>
-    void SetObjects(List<GameObject> objectsList);
+    /// <returns>the number of object added.</returns>
+    int SetObjects(List<GameObject> objectsList);
 
     /// <summary>
     /// Gets the number of shelves.
@@ -31,4 +32,9 @@ public interface ISupermarketContainer
     /// </summary>
     /// <returns>the container's length.</returns>
     float GetLength();
+
+    /// <summary>
+    /// Fills the cointainer with all the objects added.
+    /// </summary>
+    void Fill();
 }

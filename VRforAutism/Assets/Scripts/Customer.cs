@@ -19,6 +19,7 @@ public class Customer : MonoBehaviour
     private NavMeshAgent _navMeshAgent;
     private Person _person;
     private List<Person> _otherPeopleList;
+    private Animator _animator;
     
     private Vector3 _directionToTarget;
     private Vector3 _lookingDirection;
@@ -41,6 +42,7 @@ public class Customer : MonoBehaviour
         _person = GetComponent<Person>();
         _otherPeopleList = GetListOfOtherPeople();
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
 
         _directionToTarget = new Vector3();
         _lookingDirection = new Vector3();
@@ -90,8 +92,16 @@ public class Customer : MonoBehaviour
         //Initial State
         _stateMachine.SetState(beginningState);
     }
-	
-    void Update() => _stateMachine.Tik();
+
+    void Update() 
+    {
+        _stateMachine.Tik();
+        if (this._animator)
+        {
+            this._animator.SetFloat("speed", this._navMeshAgent.velocity.magnitude);
+        }
+    }
+
 
     
     /* PUBLIC METHODS-------------------------------------------------------------------------------------------------*/
@@ -169,6 +179,11 @@ public class Customer : MonoBehaviour
             {
                 var item = itemComponent.gameObject;
                 item.SetActive(false);
+            }
+
+            if (this._animator)
+            {
+                this._animator.SetBool("pickObject", true); //Starts grab item animation
             }
             _itemsToBuy.takeOne();
         }
