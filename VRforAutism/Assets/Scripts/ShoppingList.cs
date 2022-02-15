@@ -42,6 +42,12 @@ public class ShoppingList
             ItemInTheList(item).removeOne();
     }
 
+    public void TakeNItem(Item item)
+    {
+        if (IsItemOnList(item))
+            ItemInTheList(item).takeAll();
+    }
+
     private List<ItemOnList> GenerateItemList()
     {
         var list = new List<ItemOnList>();

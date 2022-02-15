@@ -235,7 +235,7 @@ MonoBehaviour:
   _viewAngle: 100
   _paymentDuration: 5
   _walkingClip: {fileID: 8300000, guid: 11b7d545269d2e84d869ffb39abad2ab, type: 3}
-  _greetingClip: {fileID: 8300000, guid: 691d00092afa8844eb6c1647d39e05b5, type: 3}
+  _greetingClip: {fileID: 8300000, guid: e659f12a782d57f4ca86ced89b00589b, type: 3}
 --- !u!82 &6560567384824818315
 AudioSource:
   m_ObjectHideFlags: 0

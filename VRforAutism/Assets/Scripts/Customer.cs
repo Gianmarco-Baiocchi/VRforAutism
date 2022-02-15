@@ -259,9 +259,15 @@ public class Customer : MonoBehaviour
         if (_person.ShoppingList.IsShoppingFinished()) return null;
         
         _itemsToBuy = _person.ShoppingList.ItemsToTake()[0];
-        var transforms = _itemsToBuy.Item.GetComponentsInParent<Transform>();
-        //Debug.Log("name" + _person.Username + "   " + transforms[0].gameObject.name);
-        return transforms[0].gameObject; //[1] indicate the ItemPoint of the item 
+        if (FindObjectsOfType<Item>() == null || !FindObjectsOfType<Item>().Any(item => item.ItemName.Equals(_itemsToBuy.Item.ItemName)))
+        {
+            _itemsToBuy.takeAll();
+            GetNewItemTarget();
+        }
+        Debug.Log("itemToBuy " + _itemsToBuy.Item.ItemName + "  " + FindObjectsOfType<Item>().Any(item => item.ItemName.Equals(_itemsToBuy.Item.ItemName)));
+        var item = FindObjectsOfType<Item>().Where(item => item.ItemName.Equals(_itemsToBuy.Item.ItemName)).ToList()[0];
+        var transforms = item.GetComponentsInParent<Transform>();
+        return transforms[1] == null ? transforms[0].gameObject : transforms[1].gameObject; //[0] indicate the ItemPoint of the item 
     }
 
     private bool IsTargetReached()

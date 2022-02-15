@@ -28,6 +28,13 @@
             }
         }
     }
+    
+    public void takeAll()
+    {
+        while (_nTaken != _nItem)
+            _nTaken++;
+        IsAllTaken = true;
+    }
 
     public void removeOne()
     {
