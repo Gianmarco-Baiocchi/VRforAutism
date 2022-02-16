@@ -6,28 +6,40 @@ using System.Threading.Tasks;
 
 enum FruitItems
 {
-    Apple,
+    AppleRed,
+    AppleYellow,
+    AppleGreen,
     Orange,
+    OrangeRed,
     Peach,
     Ananas,
+    Avocado,
+    Lime,
+    Lemon,
+    Pear,
+    Banana,
 }
 
 enum VegetablesItems
 {
-    salad,
-    tomato
+    Bean,
+    Peas,
+    Broccoli,
 }
 
 enum FridgeItems
 {
-    milk,
-    cheese,
-    yogurt
+    Milk,
+    Cheese,
+    Tuna,
 }
 
 enum SweetItems
 {
     Biscuit,
+    Chips,
+    Pasta,
+    Cracker,
 }
 
 enum DrinkItems
@@ -35,24 +47,14 @@ enum DrinkItems
     Water,
     Tea,
     Soda,
-    Lattina,
+    Cola,
 }
 
 enum BeautyItems
 {
-    FlaconeShampoo,
-}
-
-enum TempItems
-{
-    Bottiglietta,
-    //FlaconeShampoo,
-    //Lattina,
-    //Biscuit,
-    //Orange,
-    //Water,
-    //Apple,
-    //Soda
+    Shampoo,
+    FaceCream,
+    Balsamo,
 }
 
 static class SupermarketItems

@@ -59,7 +59,7 @@ public class TwoSideRack : SupermarketContainer
             else
             {
                 //Back shelf point
-                itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/ItemsPointEmpty"),
+                itemsPoint = Instantiate<GameObject>(Resources.Load<GameObject>("Prefabs/Containers/ItemsPointEmpty"),
                         start_pos + new Vector3(0, 0, shelf.GetComponent<BoxCollider>().size.z / 2), this.transform.rotation);
                 itemsPoint.name = obj.name + "s";
             }

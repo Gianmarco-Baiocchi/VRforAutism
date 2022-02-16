@@ -8,12 +8,12 @@ public class RackRow : MonoBehaviour
     [SerializeField] private int _nRacks = 0;
     [SerializeField] private GameObject _rackPrefab;
     [SerializeField] private float _distance = 0.05f;
-    private List<string> _objects = new List<string>();
+    private List<GameObject> _objects;
 
     // Start is called before the first frame update
     void Awake()
     {
-        this._objects = (List<string>)typeof(SupermarketItems).GetMethod("getItemsList").MakeGenericMethod(System.Type.GetType(_type)).Invoke(null, null);
+        this._objects = new List<GameObject>(Resources.LoadAll<GameObject>("Prefabs/Items/" + this._type + "/"));
         if (this._rackPrefab == null)
             this._rackPrefab = (GameObject) Resources.Load("Prefabs/SupermarketRack");
         this.createRacks();
@@ -34,7 +34,8 @@ public class RackRow : MonoBehaviour
                 pos.x += (rack.GetComponent<ISupermarketContainer>().GetLength() + this._distance) * (i - this._nRacks / 2);
             rack.transform.position = pos;
             rack.transform.RotateAround(this.transform.position, new Vector3(0, 1, 0), this.transform.rotation.eulerAngles.y);
-            int count = rack.GetComponent<ISupermarketContainer>().SetObjects(this._objects.ConvertAll(s => (GameObject)Resources.Load(s, typeof(GameObject))));
+            //int count = rack.GetComponent<ISupermarketContainer>().SetObjects(this._objects.ConvertAll(s => (GameObject)Resources.Load(s, typeof(GameObject))));
+            int count = rack.GetComponent<ISupermarketContainer>().SetObjects(this._objects);
             this._objects.RemoveRange(0, count);
             rack.GetComponent<ISupermarketContainer>().Fill();
         }
