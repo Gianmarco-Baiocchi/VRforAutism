@@ -216,8 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ec9257e12b2fa4c901f34826f1355a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isUserCharacter: 0
-  _cart: {fileID: 0}
   _username: 
 --- !u!114 &7930372409761755149
 MonoBehaviour:
@@ -235,7 +233,7 @@ MonoBehaviour:
   _viewAngle: 100
   _paymentDuration: 5
   _walkingClip: {fileID: 8300000, guid: fc7b65f477ba40b4f9c2ee5fb57034ff, type: 3}
-  _greetingClip: {fileID: 8300000, guid: fc7b65f477ba40b4f9c2ee5fb57034ff, type: 3}
+  _greetingClip: {fileID: 8300000, guid: 3c844697e0e58984f888b38741dc67ff, type: 3}
 --- !u!82 &6560567384824818315
 AudioSource:
   m_ObjectHideFlags: 0

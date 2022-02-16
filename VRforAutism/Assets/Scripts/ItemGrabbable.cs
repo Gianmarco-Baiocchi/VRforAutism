@@ -37,7 +37,7 @@ public class ItemGrabbable : Grabbable
 
             if (toTake)
             {
-                Debug.Log(person.ShoppingList.IsItemOnList(_item));
+                //Debug.Log(person.ShoppingList.IsItemOnList(_item));
                 if (person.ShoppingList.IsItemOnList(_item) && person.ShoppingList.IsItemMustBeTaken(_item))
                     person.ShoppingList.ItemTaken(_item);
                 else

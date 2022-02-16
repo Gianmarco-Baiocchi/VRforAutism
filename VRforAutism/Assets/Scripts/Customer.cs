@@ -14,6 +14,8 @@ public class Customer : MonoBehaviour
     [SerializeField] private float _paymentDuration;
     [SerializeField] private AudioClip _walkingClip;
     [SerializeField] private AudioClip _greetingClip;
+    [SerializeField] private float collectingTimeLimit; //alternativa, nel caso in cui il lookingAtItem non funzion adeguatamente
+
     
     private GameObject _target;
     private NavMeshAgent _navMeshAgent;
@@ -28,6 +30,7 @@ public class Customer : MonoBehaviour
     private ItemOnList _itemsToBuy;
     private CashRegister _assignedCashRegister;
     private float _paymentTime;
+    private float _collectingTime;
 
     private AudioSource _audioSource;
     private bool _alreadyGretted;
@@ -53,8 +56,8 @@ public class Customer : MonoBehaviour
         ResetVariables();
         
         
-        //_stateMachine = new FiniteStateMachine<Customer>(this, _person.Username, true); //Debug Mode
-        _stateMachine = new FiniteStateMachine<Customer>(this);
+        _stateMachine = new FiniteStateMachine<Customer>(this, _person.Username, true); //Debug Mode
+        //_stateMachine = new FiniteStateMachine<Customer>(this);
 
         //States
         State beginningState = new BeginningState("Entering to the supermarket", this);
@@ -75,7 +78,7 @@ public class Customer : MonoBehaviour
         _stateMachine.AddTransition(movingToTargetItemState, stopState, () => !_person.IsMoving);
         
         _stateMachine.AddTransition(targetItemReachedState, movingToCashRegisterState, () => _person.ShoppingList.IsShoppingFinished());
-        _stateMachine.AddTransition(targetItemReachedState, movingToTargetItemState, () => IsLooking(_lookingDirection));
+        _stateMachine.AddTransition(targetItemReachedState, movingToTargetItemState, () => IsLooking(_lookingDirection) || _collectingTime > collectingTimeLimit);
         
         _stateMachine.AddTransition(movingToCashRegisterState, queuingState, IsTargetReached);
         
@@ -136,7 +139,10 @@ public class Customer : MonoBehaviour
     {
         _target = GetNewItemTarget();
         if (_target != null)
+        {
             _navMeshAgent.SetDestination(_target.transform.position);
+            _collectingTime = 0;
+        }
     }
 
     public void MoveToCashRegisterQueuePosition()
@@ -233,6 +239,11 @@ public class Customer : MonoBehaviour
         _paymentTime += Time.deltaTime;
     }
     
+    public void CollectingItem()
+    {
+        _collectingTime += Time.deltaTime;
+    }
+    
     public void LeaveTheQueue()
     {
         _assignedCashRegister.ScrollList();
@@ -247,7 +258,7 @@ public class Customer : MonoBehaviour
 
     public void GreetingSound()
     {
-        Debug.Log("gr." + _alreadyGretted + "  " + IsLookingAtPlayer() );
+        //Debug.Log("gr." + _alreadyGretted + "  " + IsLookingAtPlayer() );
         if (_alreadyGretted || !IsLookingAtPlayer()) return;
         _audioSource.clip = _greetingClip;
         _audioSource.loop = false;
@@ -257,7 +268,6 @@ public class Customer : MonoBehaviour
     
     public void WalkingSound()
     {
-        if (_audioSource.clip == _walkingClip) return;
         _audioSource.clip = _walkingClip;
         _audioSource.loop = true;
         _audioSource.Play();
@@ -279,7 +289,6 @@ public class Customer : MonoBehaviour
             _itemsToBuy.takeAll();
             GetNewItemTarget();
         }
-        Debug.Log("itemToBuy " + _itemsToBuy.Item.ItemName + "  " + FindObjectsOfType<Item>().Any(item => item.ItemName.Equals(_itemsToBuy.Item.ItemName)));
         var item = FindObjectsOfType<Item>().Where(item => item.ItemName.Equals(_itemsToBuy.Item.ItemName)).ToList()[0];
         var transforms = item.GetComponentsInParent<Transform>();
         return transforms[1] == null ? transforms[0].gameObject : transforms[1].gameObject; //[0] indicate the ItemPoint of the item 
@@ -294,7 +303,7 @@ public class Customer : MonoBehaviour
         return false;
     }
 
-    private bool IsLooking(Vector3 vector)
+    private static bool IsLooking(Vector3 vector)
     {
         return (vector.x.ToString("0.00") == "0,00" && vector.y.ToString("0.00") == "0,00" && 
                 (vector.z.ToString("0.00") == "1,00" || vector.z.ToString("0.00") == "-1,00")) ||
@@ -318,6 +327,7 @@ public class Customer : MonoBehaviour
     {
         _assignedCashRegister = null;
         _paymentTime = 0.0f;
+        _collectingTime = 0.0f;
         _alreadyGretted = false;
     }
     
@@ -429,6 +439,7 @@ public class TargetItemReachedState : State
     public override void Tik()
     {
         _npc.LookAtTarget();
+        _npc.CollectingItem();
     }
 
     public override void Exit()

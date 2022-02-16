@@ -47,6 +47,7 @@ public class CashRegister : MonoBehaviour
             {
                 var position = _queuePositions.Last().QueuePoint.transform.position;
                 var newQueuePoint = Instantiate(_queuePositions.Last().QueuePoint, new Vector3(position.x - 3f, position.y, position.z), Quaternion.identity);
+                newQueuePoint.transform.localScale = _queuePositions.Last().QueuePoint.transform.lossyScale;
                 _queuePositions.Add(new QueuePosition(newQueuePoint));
                 PendingPerson.Remove(personInstanceId);
             }

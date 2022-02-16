@@ -67,7 +67,6 @@ public class ShoppingList
                 list.Add(new ItemOnList(itemsPoints[randIndex].GetComponentInChildren<Item>(), nItem:Random.Range(1, 4)));
             }
         }
-        Debug.Log("list count: " + list.Count);
         return list; //TODO: se finiscono tutti gli oggetti all'interno del supermercato, il programma va in errore
     }
 

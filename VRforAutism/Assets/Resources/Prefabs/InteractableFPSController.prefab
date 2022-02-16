@@ -109,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ec9257e12b2fa4c901f34826f1355a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isUserCharacter: 1
   _username: 
 --- !u!208 &3269496869008485506
 NavMeshObstacle:
@@ -302,6 +301,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3330123801174029895}
     m_Modifications:
+    - target: {fileID: 2943540083229047519, guid: 3fdeb66b827a3dd44978f923d977fc71, type: 3}
+      propertyPath: m_fontSize
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943540083229047519, guid: 3fdeb66b827a3dd44978f923d977fc71, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943540083229047519, guid: 3fdeb66b827a3dd44978f923d977fc71, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2943540083229047519, guid: 3fdeb66b827a3dd44978f923d977fc71, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4404728863965319333, guid: 3fdeb66b827a3dd44978f923d977fc71, type: 3}
       propertyPath: m_FontData.m_MaxSize
       value: 80
