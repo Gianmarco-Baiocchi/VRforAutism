@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Linq;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -13,6 +12,7 @@ public class WinMenuGUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI extraItemsText;
     [SerializeField] private TextMeshProUGUI totalText;
     [SerializeField] private GameObject playerObject;
+    [SerializeField] private Canvas playerCanvas;
     [SerializeField] private string menuScene;
 
     private Person _player;
@@ -29,6 +29,7 @@ public class WinMenuGUI : MonoBehaviour
         shoppingListText.text = ShoppingListDescription();
         extraItemsText.text = ExtraItemsDescription();
         totalText.text = TotalDescription();
+        playerCanvas.gameObject.SetActive(false);
     }
     
     public void ReturnToMainMenu()
@@ -55,11 +56,9 @@ public class WinMenuGUI : MonoBehaviour
 
     private string TotalDescription()
     {
-        float total = 0.0f;
-        Debug.Log("item:" + _player.ShoppingList.ItemList[0].Item.Price + "   " + _player.ShoppingList.ItemList[0].NTaken);
+        var total = 0.0f;
         _player.ShoppingList.ItemList.ForEach(item => total += item.Item.Price * item.NTaken);
         _player.ExtraTakenItems?.Keys.ToList().ForEach(k => total += k.Price * _player.ExtraTakenItems[k]);
-        Debug.Log(total);
-        return total + " $";
+        return total.ToString("0.00") + "€";
     }
 }

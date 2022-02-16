@@ -1268,8 +1268,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ec9257e12b2fa4c901f34826f1355a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isUserCharacter: 0
-  _cart: {fileID: 0}
   _username: woman
 --- !u!114 &6885153300759567780
 MonoBehaviour:
@@ -1288,6 +1286,7 @@ MonoBehaviour:
   _paymentDuration: 5
   _walkingClip: {fileID: 8300000, guid: fc7b65f477ba40b4f9c2ee5fb57034ff, type: 3}
   _greetingClip: {fileID: 8300000, guid: d1d6dbc1ca24ff1428b31ab4a30b14ba, type: 3}
+  collectingTimeLimit: 3
 --- !u!82 &1789698224281606748
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1300,13 +1299,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fc7b65f477ba40b4f9c2ee5fb57034ff, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 2
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1344,7 +1343,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

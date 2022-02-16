@@ -11,7 +11,6 @@ public class ShoppingListGUI : MonoBehaviour
     }
     public void WriteText()
     {
-        Debug.Log("stampa");
         var list = GameObject.FindWithTag("Player").GetComponent<Person>().ShoppingList;
         GetComponentsInChildren<TextMeshProUGUI>()[1].text = list.ItemList.Aggregate("", (text, itemOnList) => text + ("- " + itemOnList.Info + "\n"));
     }
