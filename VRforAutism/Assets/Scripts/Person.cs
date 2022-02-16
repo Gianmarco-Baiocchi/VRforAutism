@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Attributes;
 using UnityEngine;
 
 public class Person : MonoBehaviour
