@@ -27,8 +27,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 5182813871257259992}
   - {fileID: 2613968929268008185}
+  - {fileID: 7431477486155418687}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -57,11 +57,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4711904954843922634}
   m_LocalRotation: {x: -0.000000011422178, y: -0.70710677, z: -0.7071069, w: 0.000000005796479}
-  m_LocalPosition: {x: -4.2170467, y: 5.47, z: 1.4774535}
+  m_LocalPosition: {x: -4.22, y: 5.94, z: 1.4774535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7562627818961294724}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -180}
 --- !u!108 &3137946293747485292
 Light:
@@ -81,7 +81,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -114,7 +114,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -123,9 +123,9 @@ Light:
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0
+  m_ShadowRadius: 1
   m_ShadowAngle: 0
---- !u!1 &6721222663215554032
+--- !u!1 &9046166776338865687
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -133,9 +133,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5182813871257259992}
-  - component: {fileID: 2497775807969413690}
-  - component: {fileID: 8921137982091464733}
+  - component: {fileID: 7431477486155418687}
+  - component: {fileID: 172550186047769053}
+  - component: {fileID: 6558044927372317690}
   m_Layer: 0
   m_Name: LUCE_SUPERMERCATO
   m_TagString: Untagged
@@ -143,35 +143,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5182813871257259992
+--- !u!4 &7431477486155418687
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6721222663215554032}
+  m_GameObject: {fileID: 9046166776338865687}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 4.2331, y: -5.3503, z: -1.4831}
-  m_LocalScale: {x: 200.37999, y: 200.37999, z: 200.37999}
+  m_LocalPosition: {x: 0, y: -0.128, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7562627818961294724}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2497775807969413690
+--- !u!33 &172550186047769053
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6721222663215554032}
-  m_Mesh: {fileID: 85054601901838957, guid: 5b6b0e05414a6a94f95d7bf3a35d5209, type: 3}
---- !u!23 &8921137982091464733
+  m_GameObject: {fileID: 9046166776338865687}
+  m_Mesh: {fileID: 85054601901838957, guid: 6e85aa00ffb4630448c4575e9668551b, type: 3}
+--- !u!23 &6558044927372317690
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6721222663215554032}
+  m_GameObject: {fileID: 9046166776338865687}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 77f902acfeba29748b09ff68e7f2d509, type: 2}
+  - {fileID: 2100000, guid: 46cbae7d3f25dbe49b918fea7ec38380, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

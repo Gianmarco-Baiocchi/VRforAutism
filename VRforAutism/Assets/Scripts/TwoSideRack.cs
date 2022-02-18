@@ -24,7 +24,7 @@ public class TwoSideRack : SupermarketContainer
 
     public override float GetLength()
     {
-        return this.GetComponent<BoxCollider>().size.x;
+        return this.GetComponent<BoxCollider>().size.x * this.transform.localScale.x;
     }
 
     protected override void FillRack()
@@ -42,8 +42,10 @@ public class TwoSideRack : SupermarketContainer
                 break;
             
             var shelf = shelves.GetChild(i % shelves.childCount);
-            int n = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.x / (objectSize.x + base._distance.x * 2));
-            int m = Mathf.FloorToInt(shelf.GetComponent<BoxCollider>().size.z / ((objectSize.z + base._distance.z * 2) * 2));
+            var shelf_size_x = shelf.GetComponent<BoxCollider>().size.x * this.transform.localScale.x;
+            var shelf_size_z = shelf.GetComponent<BoxCollider>().size.z * this.transform.localScale.z;
+            int n = Mathf.FloorToInt(shelf_size_x / (objectSize.x + base._distance.x * 2));
+            int m = Mathf.FloorToInt( shelf_size_z / ((objectSize.z + base._distance.z * 2) * 2));
             Vector3 start_pos = shelf.position;
             Vector3 rotation = this.transform.rotation.eulerAngles;
 
@@ -82,7 +84,7 @@ public class TwoSideRack : SupermarketContainer
                         pos += new Vector3(((objectSize.x + base._distance.x * 2) * j), 0, -(objectSize.z + base._distance.z * 2) * l);
                         pos.z -= objectSize.z + base._distance.z;
                     }
-                    pos.x -= ((shelf.GetComponent<BoxCollider>().size.x / 2) - objectSize.x/2 - base._distance.x);
+                    pos.x -= ((shelf_size_x / 2) - objectSize.x/2 - base._distance.x);
                     bottle.transform.position = pos;
                     bottle.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
                     bottle.transform.SetParent(itemsPoint.transform);

@@ -55,7 +55,7 @@ public class ShoppingList
         //prendo tutti gli ItemsPoint dove il numero di prodotti non è zero
         var itemsPoints = GameObject.FindGameObjectsWithTag("ItemsPoint").Where(o => o.GetComponentInChildren<Item>() != null).ToList();
         
-        var randIndexValues = new int[Random.Range(1, itemsPoints.Count)];
+        var randIndexValues = new int[Random.Range(1, 6)];
         var i = 0;
         while (i < randIndexValues.Length)
         {

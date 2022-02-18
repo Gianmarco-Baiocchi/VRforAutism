@@ -18,6 +18,8 @@ public class ItemGrabbable : Grabbable
         rigidBody.angularVelocity = Vector3.zero;
         rigidBody.useGravity = false;
         rigidBody.detectCollisions = false;
+
+        _item.GetComponent<Collider>().enabled = false;
     }
 
     public override void Drop()
@@ -50,6 +52,7 @@ public class ItemGrabbable : Grabbable
                 _item.transform.rotation = _item.GetInitialRotation();
                 rigidBody.velocity = Vector3.zero;
                 rigidBody.angularVelocity = Vector3.zero;
+                _item.GetComponent<Collider>().enabled = true;
             }
             _item = null;
         }

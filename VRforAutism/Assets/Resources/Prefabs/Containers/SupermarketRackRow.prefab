@@ -43,5 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18ef19b4aff4cef4c96ef2af6ec4e280, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nRacks_: 0
-  rackPrefab_: {fileID: 0}
+  _type: 
+  _nRacks: 0
+  _rackPrefab: {fileID: 0}
+  _distance: 0.05
