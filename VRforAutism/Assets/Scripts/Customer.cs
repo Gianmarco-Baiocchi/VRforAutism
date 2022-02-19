@@ -56,8 +56,8 @@ public class Customer : MonoBehaviour
         ResetVariables();
         
         
-        _stateMachine = new FiniteStateMachine<Customer>(this, _person.Username, true); //Debug Mode
-        //_stateMachine = new FiniteStateMachine<Customer>(this);
+        //_stateMachine = new FiniteStateMachine<Customer>(this, _person.Username, true); //Debug Mode
+        _stateMachine = new FiniteStateMachine<Customer>(this);
 
         //States
         State beginningState = new BeginningState("Entering to the supermarket", this);

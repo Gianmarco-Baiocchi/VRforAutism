@@ -8,8 +8,15 @@ using UnityEngine;
 public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContainer
 {
     protected List<Tuple<GameObject, Vector3>> _objectsList = new List<Tuple<GameObject, Vector3>>();
-    protected Vector3 _distance = new Vector3(0.03f, 0.01f, 0.03f);
+    [SerializeField] protected Vector3 _distance = new Vector3(0.03f, 0.01f, 0.03f);
     protected bool _isFill = false;
+    private System.Random _random = new System.Random();
+
+    public void SetDistanceObject(float lateralOffset, float frontOffset)
+    {
+        this._distance.x = lateralOffset;
+        this._distance.z = frontOffset;
+    }
 
     public virtual void SetObject(GameObject obj, int index)
     {
@@ -67,5 +74,20 @@ public abstract class SupermarketContainer : MonoBehaviour, ISupermarketContaine
         }
         //No capsule or box collider
         return Vector3.zero;
+    }
+
+    protected bool GenerateProbability(float probability)
+    {
+        return this._random.NextDouble() < probability;
+    }
+
+    protected float GenerateRotation(float max)
+    {
+        return (float)(this._random.Next(-1, 2) * this._random.NextDouble() * max);
+    }
+
+    protected float GenerateOffset(float max)
+    {
+        return (float)(this._random.Next(-1, 2) * this._random.NextDouble() * max);
     }
 }

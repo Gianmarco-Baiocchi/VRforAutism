@@ -56,13 +56,22 @@ public class OneSideRack : SupermarketContainer
             {
                 for(int l = 0; l < m; l++)
                 {
-                    var item = Instantiate<GameObject>(obj);
-                    Vector3 pos = start_pos + new Vector3(((objectSize.x + base._distance.x * 2) * j), 0, -(objectSize.z + base._distance.z * 2) * l);
-                    pos.x -= (shelf.GetComponent<BoxCollider>().size.x / 2) - (objectSize.x / 2) - base._distance.x;
-                    pos.z -= (objectSize.z / 2) + base._distance.z;
-                    item.transform.position = pos;
-                    item.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
-                    item.transform.SetParent(itemsPoint.transform);
+                    if (base.GenerateProbability(0.7f))
+                    {
+                        var item = Instantiate<GameObject>(obj);
+                        Vector3 itemPos = start_pos + new Vector3(((objectSize.x + base._distance.x * 2) * j), 0, -(objectSize.z + base._distance.z * 2) * l);
+                        itemPos.x -= (shelf.GetComponent<BoxCollider>().size.x / 2) - (objectSize.x / 2) - base._distance.x;
+                        itemPos.z -= (objectSize.z / 2) + base._distance.z;
+                        //Randomizing position and rotation
+                        itemPos.x += base.GenerateOffset(base._distance.x / 3);
+                        itemPos.z += base.GenerateOffset(base._distance.z / 4);
+                        Vector3 itemRot = new Vector3(0, base.GenerateRotation(45f), 0);
+
+                        item.transform.position = itemPos;
+                        item.transform.eulerAngles = itemRot;
+                        item.transform.RotateAround(start_pos, new Vector3(0, 1, 0), rotation.y);
+                        item.transform.SetParent(itemsPoint.transform);
+                    }
                 }
             }
         

@@ -1795,6 +1795,14 @@ PrefabInstance:
       propertyPath: _nObjectsRow
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _frontObjectDistance
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _lateralObjectDistance
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 2914719090599112474, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: m_Name
       value: SupermarketRackRow_Vegetables
@@ -2787,6 +2795,14 @@ PrefabInstance:
       propertyPath: _nObjectsRow
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _frontObjectDistance
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _lateralObjectDistance
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 2914719090599112474, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: m_Name
       value: SupermarketRackRow
@@ -3127,6 +3143,14 @@ PrefabInstance:
       propertyPath: _nObjectsRow
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _frontObjectDistance
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _lateralObjectDistance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2914719090599112474, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: m_Name
       value: SupermarketRackRow (4)
@@ -3385,6 +3409,14 @@ PrefabInstance:
       propertyPath: _nObjectsRow
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _frontObjectDistance
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _lateralObjectDistance
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 2914719090599112474, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: m_Name
       value: SupermarketRackRow2
@@ -3556,6 +3588,14 @@ PrefabInstance:
     - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: _nObjectsRow
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _frontObjectDistance
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
+      propertyPath: _lateralObjectDistance
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2914719090599112474, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: m_Name

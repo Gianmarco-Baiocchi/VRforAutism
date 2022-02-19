@@ -8,6 +8,13 @@ using UnityEngine;
 public interface ISupermarketContainer
 {
     /// <summary>
+    /// Sets the distances from the lateral and the front object.
+    /// </summary>
+    /// <param name="lateralOffset">Distance in world unit from the lateral objects.</param>
+    /// <param name="frontOffset">Distance in world unit from the front and back objects.</param>
+    void SetDistanceObject(float lateralOffset, float frontOffset);
+    
+    /// <summary>
     /// Sets the object contained in the shelves and it instances all possible units.
     /// </summary>
     /// <param name="obj">Object to fill the shelves.</param>

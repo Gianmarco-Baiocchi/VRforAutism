@@ -8,6 +8,8 @@ public class RackRow : MonoBehaviour
     [SerializeField] private int _nRacks = 0;
     [SerializeField] private GameObject _rackPrefab;
     [SerializeField] private float _distance = 0.05f;
+    [SerializeField] private float _lateralObjectDistance = 0.01f;
+    [SerializeField] private float _frontObjectDistance = 0.01f;
     private List<GameObject> _objects;
 
     // Start is called before the first frame update
@@ -37,6 +39,7 @@ public class RackRow : MonoBehaviour
             //int count = rack.GetComponent<ISupermarketContainer>().SetObjects(this._objects.ConvertAll(s => (GameObject)Resources.Load(s, typeof(GameObject))));
             int count = rack.GetComponent<ISupermarketContainer>().SetObjects(this._objects);
             this._objects.RemoveRange(0, count);
+            rack.GetComponent<ISupermarketContainer>().SetDistanceObject(this._lateralObjectDistance, this._frontObjectDistance);
             rack.GetComponent<ISupermarketContainer>().Fill();
         }
     }
