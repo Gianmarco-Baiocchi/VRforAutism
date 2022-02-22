@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5293d3617b13664428dadd988e709dd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _distance: {x: 0.03, y: 0.01, z: 0.03}
 --- !u!208 &793192284120050137
 NavMeshObstacle:
   m_ObjectHideFlags: 0

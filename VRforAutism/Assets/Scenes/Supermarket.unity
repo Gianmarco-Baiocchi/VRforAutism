@@ -272,7 +272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 408220224412888877, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 408220224412888877, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -358,9 +358,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3058438968239637163, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
+      propertyPath: _distance
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 3432583462638302006, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
       propertyPath: m_BoxSize.x
       value: 11.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652589451485604063, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652589451485604063, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3696595525911007683, guid: 94b4013342b2d6f459db6ba344778a83, type: 3}
       propertyPath: m_BoundingSphereOverride.w
