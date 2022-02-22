@@ -14,7 +14,7 @@ public class Customer : MonoBehaviour
     [SerializeField] private float _paymentDuration;
     [SerializeField] private AudioClip _walkingClip;
     [SerializeField] private AudioClip _greetingClip;
-    [SerializeField] private float collectingTimeLimit; //alternativa, nel caso in cui il lookingAtItem non funzion adeguatamente
+    [SerializeField] private float collectingItemTime; //alternativa, nel caso in cui il lookingAtItem non funzion adeguatamente
 
     
     private GameObject _target;
@@ -22,6 +22,7 @@ public class Customer : MonoBehaviour
     private Person _person;
     private List<Person> _otherPeopleList;
     private Animator _animator;
+    private bool isGrabAnimationStarted;
     
     private Vector3 _directionToTarget;
     private Vector3 _lookingDirection;
@@ -38,6 +39,7 @@ public class Customer : MonoBehaviour
     private FiniteStateMachine<Customer> _stateMachine;
 
     private const int NoDetection = -1;
+    private const float GrabbingAnimationTime = 1.4f;
 
     /* EVENT FUNCTION-------------------------------------------------------------------------------------------------*/
     void Start ()
@@ -78,7 +80,7 @@ public class Customer : MonoBehaviour
         _stateMachine.AddTransition(movingToTargetItemState, stopState, () => !_person.IsMoving);
         
         _stateMachine.AddTransition(targetItemReachedState, movingToCashRegisterState, () => _person.ShoppingList.IsShoppingFinished());
-        _stateMachine.AddTransition(targetItemReachedState, movingToTargetItemState, () => IsLooking(_lookingDirection) || _collectingTime > collectingTimeLimit);
+        _stateMachine.AddTransition(targetItemReachedState, movingToTargetItemState, () => _collectingTime > collectingItemTime);
         
         _stateMachine.AddTransition(movingToCashRegisterState, queuingState, IsTargetReached);
         
@@ -186,14 +188,10 @@ public class Customer : MonoBehaviour
                 var item = itemComponent.gameObject;
                 item.SetActive(false);
             }
-
-            if (this._animator)
-            {
-                this._animator.SetBool("pickObject", true); //Starts grab item animation
-            }
             _itemsToBuy.takeOne();
         }
         _itemsToBuy = null;
+        isGrabAnimationStarted = false;
     }
 
     public void CheckPersonObstacle()
@@ -242,6 +240,11 @@ public class Customer : MonoBehaviour
     public void CollectingItem()
     {
         _collectingTime += Time.deltaTime;
+        if (!isGrabAnimationStarted && _collectingTime > (collectingItemTime - GrabbingAnimationTime) && _animator)
+        {
+            _animator.SetBool("pickObject", true); //Starts grab item animation
+            isGrabAnimationStarted = true;
+        }
     }
     
     public void LeaveTheQueue()
@@ -329,6 +332,7 @@ public class Customer : MonoBehaviour
         _paymentTime = 0.0f;
         _collectingTime = 0.0f;
         _alreadyGretted = false;
+        isGrabAnimationStarted = false;
     }
     
     private bool DetectingPersonObstacle(Vector3 directionToTarget)

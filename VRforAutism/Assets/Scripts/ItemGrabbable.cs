@@ -24,11 +24,11 @@ public class ItemGrabbable : Grabbable
 
     public override void Drop()
     {
-        //Drop(false, null, null);
-        Drop(null, false);
+        Drop(false, null, null);
+        //Drop(null, false);
     }
 
-    public void Drop(Person person, bool toTake)
+    /*public void Drop(Person person, bool toTake)
     {
         if (_item != null)
         {
@@ -56,10 +56,10 @@ public class ItemGrabbable : Grabbable
             }
             _item = null;
         }
-    }
+    }*/
     
-    /*
-    public void Drop(bool isFacingCart, Cart cart, ShoppingList shoppingList)
+   
+    public void Drop(bool isFacingCart, Cart cart, Person person)
     {
         if (_item != null)
         {
@@ -68,24 +68,36 @@ public class ItemGrabbable : Grabbable
             rigidBody.useGravity = true;
             rigidBody.detectCollisions = true;
 
-            if (shoppingList.IsItemMustBeTaken(_item) && isFacingCart  && !_item.IsInsideCart)
+            if (isFacingCart  && !_item.IsInsideCart)
             {
-                cart.AddInsideCart(_item); //TODO: verificare se si può elimare Cart, facendo direttamente item.SetInsideCart;
-                shoppingList.ItemTaken(_item);
+                _item.transform.position = cart.GetInsideCartPosition();
+                Debug.Log(cart.GetInsideCartPosition());
+                _item.transform.parent = cart.gameObject.transform;
+                _item.IsInsideCart = true;
+                if (person.ShoppingList.IsItemOnList(_item) && person.ShoppingList.IsItemMustBeTaken(_item))
+                    person.ShoppingList.ItemTaken(_item);
+                else
+                    person.AddExtraItem(_item);
+                //new List<Renderer>(_item.GetComponentsInChildren<Renderer>()).ForEach(r => r.enabled = false);;
             }
-            else
+            else if(!isFacingCart)
             {
                 _item.transform.position = _item.GetInitialPosition();
                 _item.transform.rotation = _item.GetInitialRotation();
                 if (_item.IsInsideCart)
                 {
-                    cart.RemoveFromCart(_item); //TODO: verificare se si può elimare Cart, facendo direttamente item.SetInsideCart;
-                    shoppingList.ItemRemoved(_item);
+                    if (person.IsItemInExtraItem(_item))
+                        person.RemoveExtraItem(_item);
+                    else 
+                        person.ShoppingList.ItemRemoved(_item);
+                    _item.IsInsideCart = false;
                 }
+                
             }
+            _item.GetComponent<Collider>().enabled = true;
             rigidBody.velocity = Vector3.zero;
             rigidBody.angularVelocity = Vector3.zero;
             _item = null;
         }
-    }*/
+    }
 }

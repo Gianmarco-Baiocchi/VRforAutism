@@ -2636,7 +2636,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 2
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -2678,7 +2678,7 @@ MonoBehaviour:
   _paymentDuration: 5
   _walkingClip: {fileID: 8300000, guid: fc7b65f477ba40b4f9c2ee5fb57034ff, type: 3}
   _greetingClip: {fileID: 8300000, guid: 3c844697e0e58984f888b38741dc67ff, type: 3}
-  collectingTimeLimit: 3
+  collectingItemTime: 3
 --- !u!95 &2744601724334532480
 Animator:
   serializedVersion: 3

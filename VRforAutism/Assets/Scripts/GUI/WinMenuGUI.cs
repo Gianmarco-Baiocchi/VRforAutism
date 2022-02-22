@@ -25,6 +25,7 @@ public class WinMenuGUI : MonoBehaviour
     public void ShowMenu()
     {
         Cursor.lockState = CursorLockMode.None;
+        FindObjectOfType<FirstPersonCharacterController>().enabled = false;
         SetState(true);
         shoppingListText.text = ShoppingListDescription();
         extraItemsText.text = ExtraItemsDescription();

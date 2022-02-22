@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Person : MonoBehaviour
@@ -30,7 +31,6 @@ public class Person : MonoBehaviour
 
     public void AddExtraItem(Item newItem)
     {
-        //Debug.Log(ExtraTakenItems.Keys.First(item => item.ItemName.Equals(newItem.ItemName)));
         foreach (var item in ExtraTakenItems.Keys)
         {
             if (item.ItemName.Equals(newItem.ItemName))
@@ -39,7 +39,30 @@ public class Person : MonoBehaviour
                 return;
             }
         }
-        Debug.Log(newItem.ItemName + "   " + ExtraTakenItems.Count);
+        //Debug.Log(newItem.ItemName + "   " + ExtraTakenItems.Count);
         ExtraTakenItems.Add(newItem, 1);
+    }
+    
+    public void RemoveExtraItem(Item newItem)
+    {
+        //Debug.Log(ExtraTakenItems.Keys.First(item => item.ItemName.Equals(newItem.ItemName)));
+        foreach (var item in ExtraTakenItems.Keys.Where(item => item.ItemName.Equals(newItem.ItemName)))
+        {
+            if (ExtraTakenItems[item] == 1)
+                ExtraTakenItems.Remove(item);
+            else
+                ExtraTakenItems[item]--;
+            return;
+        }
+    }
+
+    public bool IsItemInExtraItem(Item item)
+    {
+        foreach (var key in ExtraTakenItems.Keys)
+        {
+            if (key.ItemName.Equals(item.ItemName))
+                return true;
+        }
+        return false;
     }
 }

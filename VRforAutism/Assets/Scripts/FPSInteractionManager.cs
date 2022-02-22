@@ -3,6 +3,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Object = UnityEngine.Object;
 
 [RequireComponent (typeof(Person))]
 
@@ -10,12 +11,13 @@ public class FPSInteractionManager : MonoBehaviour
 {
     [SerializeField] private Transform _fpsCameraT;
     [SerializeField] private Transform _grabPoint;
+    [SerializeField] private Transform _basketGrabPoint;
     [SerializeField] private bool _debugRay;
     [SerializeField] private float _interactionDistance;
-    [SerializeField] private float _cartDistance;
-
+    [SerializeField] private BasketInteractable _shoppingBasket;
+    
     [SerializeField] private Image _target;
-    [SerializeField] private Image _infoLabel;
+    [SerializeField] private InfoPanel _infoLabel;
 
     private Interactable _pointingInteractable;
     private Grabbable _pointingGrabbable;
@@ -32,6 +34,8 @@ public class FPSInteractionManager : MonoBehaviour
     private CashRegister _actualCashRegister;
     private bool _queueEntered;
     
+    private bool _isOnWinScreen;
+    
     void Start()
     {
         _fpsController = GetComponent<CharacterController>();
@@ -39,15 +43,19 @@ public class FPSInteractionManager : MonoBehaviour
         //_userCart = _person.Cart;
         _userShoppingList = _person.ShoppingList;
         ShowLabelInfo(false);
-
+        _isOnWinScreen = false;
         _queueEntered = false;
+        _shoppingBasket.Interact(_basketGrabPoint.gameObject);
     }
 
     void Update()
     {
         _rayOrigin = _fpsCameraT.position + _fpsController.radius * _fpsCameraT.forward;
-
-        if (_grabbedList == null)
+        if (Input.GetKey(KeyCode.O) && FindObjectOfType<OptionMenu>() != null && !_isOnWinScreen)
+        {
+            FindObjectOfType<OptionMenu>().ShowOptionMenu();
+        }
+        else if (_grabbedList == null)
         {
             if (Input.GetKey(KeyCode.E) && _grabbedObject == null)
             {
@@ -62,13 +70,17 @@ public class FPSInteractionManager : MonoBehaviour
             else
             {
                 if (_grabbedObject == null)
+                {
                     CheckInteraction();
-
-                if (_grabbedObject != null && Input.GetMouseButtonDown(0))
-                    DropItem(false);
-                
-                if (_grabbedObject != null && Input.GetMouseButtonDown(2))
-                    DropItem(true);
+                    
+                    if (Input.GetMouseButtonDown(1) && _shoppingBasket.IsGrabbed)
+                        _shoppingBasket.Interact(_basketGrabPoint.gameObject);
+                }
+                else
+                {
+                    if (Input.GetMouseButtonDown(0))
+                        Drop();
+                }
 
                 UpdateUITarget();
 
@@ -81,8 +93,12 @@ public class FPSInteractionManager : MonoBehaviour
             Drop();
             _grabbedList = null;
         }
-        
         CollisionWithQueuePosition();
+        
+        if (_infoLabel.GetComponent<Image>().enabled)
+        {
+            _infoLabel.SetClickText(IsFacingUserCart());
+        }
     }
 
     private void CollisionWithQueuePosition()
@@ -108,6 +124,7 @@ public class FPSInteractionManager : MonoBehaviour
                     if (_actualCashRegister.IsFirst(GetInstanceID()))
                     {
                         FindObjectOfType<WinMenuGUI>().ShowMenu();
+                        _isOnWinScreen = true;
                     }
                 }
             }
@@ -129,7 +146,7 @@ public class FPSInteractionManager : MonoBehaviour
             if (_pointingInteractable)
             { 
                 if(Input.GetMouseButtonDown(0))
-                    _pointingInteractable.Interact(hit.transform.gameObject);
+                    _pointingInteractable.Interact(_basketGrabPoint.gameObject);
             }
 
             //Check if is grabbable
@@ -171,27 +188,11 @@ public class FPSInteractionManager : MonoBehaviour
         if (_grabbedObject.GetComponent<ItemGrabbable>() != null)
         {
             var grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
-            //grabbedItem.Drop(IsFacingUserCart(), _userCart, _userShoppingList);
-            grabbedItem = null;
+            grabbedItem.Drop(IsFacingUserCart(), _shoppingBasket.GetComponent<Cart>(), _person);
             ShowLabelInfo(false);
         }
         else _grabbedObject.Drop();
 
-        _target.enabled = true;
-        _grabbedObject = null;
-    }
-    
-    private void DropItem(bool isTaken)
-    {
-        if (_grabbedObject == null)
-            return;
-        _grabbedObject.transform.parent = _grabbedObject.OriginalParent;
-        if (_grabbedObject.GetComponent<ItemGrabbable>() != null)
-        {
-            var grabbedItem = _grabbedObject.GetComponent<ItemGrabbable>();
-            grabbedItem.Drop(_person, isTaken);
-            ShowLabelInfo(false);
-        }
         _target.enabled = true;
         _grabbedObject = null;
     }
@@ -214,26 +215,28 @@ public class FPSInteractionManager : MonoBehaviour
         Debug.DrawRay(_rayOrigin, _fpsCameraT.forward * _interactionDistance, Color.red);
     }
 
-    //private bool IsFacingUserCart()
-    //{
-    //    var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
-    //    if (!Physics.Raycast(ray, out var hit, _cartDistance)) return false;
-    //    var facingCart = hit.transform.gameObject.GetComponent<Cart>();
-    //    return facingCart == _userCart;
-    //}
+    private bool IsFacingUserCart()
+    {
+        var ray = new Ray(_rayOrigin, _fpsCameraT.forward);
+        if (!Physics.Raycast(ray, out var hit, _interactionDistance)) return false;
+        var facingCart = hit.transform.gameObject.GetComponent<Cart>();
+        Debug.Log("isFacingCart:  " + facingCart);
+        if (facingCart == null) return false;
+        return facingCart.gameObject.GetInstanceID() == _shoppingBasket.gameObject.GetInstanceID();
+    }
     
     private void ShowLabelInfo(bool state)
     {
-        _infoLabel.GetComponent<Image>().enabled = state;
-        _infoLabel.GetComponentsInChildren<TextMeshProUGUI>().ToList().ForEach(component => component.enabled = state);
-        _infoLabel.GetComponentsInChildren<Image>().ToList().ForEach(component => component.enabled = state);
+        _infoLabel.gameObject.GetComponent<Image>().enabled = state;
+        _infoLabel.gameObject.GetComponentsInChildren<TextMeshProUGUI>().ToList().ForEach(component => component.enabled = state);
+        _infoLabel.gameObject.GetComponentsInChildren<Image>().ToList().ForEach(component => component.enabled = state);
     }
     
     private void SetLabelInfoText(string mainText, string secondaryText)
     {
-        var textsComponents = _infoLabel.GetComponentsInChildren<TextMeshProUGUI>();
+        var textsComponents = _infoLabel.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
         textsComponents[0].text = mainText;
         textsComponents[1].text = secondaryText;
     }
-    
+
 }
