@@ -144,3 +144,4 @@ Received Import Request.
 Start importing Assets/Supermarket_Gluttony_Pack/SMGP_Models/SMGP_MOD_Beer_can_LOD1.fbm using Guid(cc7a22d4547187f43ac46d39e32dbb27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'add74206eecf064458b90fc052c71fd9') in 0.002275 seconds 
   Import took 0.004612 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
