@@ -1786,7 +1786,7 @@ PrefabInstance:
     - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: _rackPrefab
       value: 
-      objectReference: {fileID: 4459553221626641480, guid: 5ffd41bd3c93d544ca87ed3d8fce9546, type: 3}
+      objectReference: {fileID: 5985762060282587417, guid: 5f06001902583b844a04c573a1acc9ce, type: 3}
     - target: {fileID: 2332825485770287621, guid: a01fc7a533355d54ab04a9d8eeed3830, type: 3}
       propertyPath: rackPrefab_
       value: 
