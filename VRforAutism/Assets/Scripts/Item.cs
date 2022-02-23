@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Item : MonoBehaviour
 {
     [SerializeField] private  float _price;

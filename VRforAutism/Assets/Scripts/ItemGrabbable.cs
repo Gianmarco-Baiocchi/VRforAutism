@@ -1,10 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof(Item))]
 public class ItemGrabbable : Grabbable
 {
     private Item _item;
+
+    private IEnumerator SetIsKinematic(bool isKinematic)
+    {
+        yield return new WaitForSeconds(0.5f);
+        this.GetComponent<Rigidbody>().isKinematic = isKinematic;
+    }
 
     public override void Grab(GameObject caller)
     {
@@ -78,6 +85,7 @@ public class ItemGrabbable : Grabbable
                     person.ShoppingList.ItemTaken(_item);
                 else
                     person.AddExtraItem(_item);
+                StartCoroutine("SetIsKinematic", true);
                 //new List<Renderer>(_item.GetComponentsInChildren<Renderer>()).ForEach(r => r.enabled = false);;
             }
             else if(!isFacingCart)
@@ -91,6 +99,7 @@ public class ItemGrabbable : Grabbable
                     else 
                         person.ShoppingList.ItemRemoved(_item);
                     _item.IsInsideCart = false;
+                    StartCoroutine("SetIsKinematic", false);
                 }
                 
             }

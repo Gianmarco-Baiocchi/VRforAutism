@@ -8,7 +8,7 @@ public class Cart : MonoBehaviour
         var xDim = itemArea.bounds.size.x;
         var zDim = itemArea.bounds.size.z;
         var p = itemArea.gameObject.transform.position;
-        return new Vector3((p.x + Random.Range(-xDim / 2, xDim / 2)), p.y, p.z + Random.Range(-zDim / 2, zDim / 2));
+        return new Vector3((p.x + Random.Range(-xDim / 4, xDim / 4)), p.y, p.z + Random.Range(-zDim / 4, zDim / 4));
     }
 
 
