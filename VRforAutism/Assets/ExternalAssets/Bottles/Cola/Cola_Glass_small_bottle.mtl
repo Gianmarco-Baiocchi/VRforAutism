@@ -1,0 +1,47 @@
+newmtl Bouchons
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Cola/difus_caps.jpg
+
+newmtl Bouteille_1
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Cola/coca_bouteilleverre_etiquette.jpg
+
+newmtl Bouteille_2
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Cola/glass_botlle_difuse.jpg
+
+newmtl Liquide
+Kd 0.0352941 0.0156863 0.00784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+

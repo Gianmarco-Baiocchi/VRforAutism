@@ -1,0 +1,334 @@
+newmtl BouteillePlastiqueCoca_Bouchon
+Kd 0.796078 0 0
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteillePlastiqueCoca_Bouteille
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteillePlastiqueCoca_Liquide
+Kd 0.0353 0.0157 0.0078
+Ke 0 0 0
+Ka 0.0206539 0.0206539 0.0206539
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl BouteillePlastiqueFanta_Bouchon
+Kd 1 0.501961 0
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteillePlastiqueFanta_Bouteille
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteillePlastiqueFanta_Liquide
+Kd 1 0.501961 0
+Ke 0 0 0
+Ka 0 0 0
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl BouteillePlastiqueOrangina_Bague
+Kd 0 0.211765 0.494118
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteillePlastiqueOrangina_Bouchon
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Orange/difuse_caps.jpg
+
+newmtl BouteillePlastiqueOrangina_Bouteille
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Orange/orang_plastique_difuse.jpg
+
+newmtl BouteillePlastiqueOrangina_Liquide
+Kd 0.996078 0.72549 0.160784
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl BouteilleVerreCoca_Bouteille
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteilleVerreCoca_Capsule
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl BouteilleVerreCoca_Liquide
+Kd 0.0353 0.0157 0.0078
+Ke 0 0 0
+Ka 0.0206539 0.0206539 0.0206539
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl BouteilleVerreOrangina_Bouteille
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Orange/orangina_verre_difuse.jpg
+
+newmtl BouteilleVerreOrangina_Capsule
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd S:OBJETS LAETI_2018/OBJETS EN COURS/Bottles/Orange/difuse_caps.jpg
+
+newmtl BouteilleVerreOrangina_Liquide
+Kd 0.996078 0.72549 0.160784
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl blanc_paille
+Kd 0.588 0.588 0.588
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
+newmtl Canette_CocaZero
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_CocaZero_Inox
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Fanta
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Fanta_Inox
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Lipton
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Lipton_Inox
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Pepsi
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Canette_Pepsi_Inox
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Glacons
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 1 1 1
+Ns 70
+Tr 0.875
+d 0.125
+Ni 1
+Tf 1 1 1
+
+newmtl RondelleCitron
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl rouge_paille
+Kd 0.7961 0 0
+Ke 0 0 0
+Ka 0.237954 0.237954 0.237954
+Ks 0 0 0
+Ns 8
+Tr 0
+d 1
+Ni 1.5
+Tf 1 1 1
+
+newmtl VerreCoca_Liquide
+Kd 0.0353 0.0157 0.0078
+Ke 0 0 0
+Ka 0.0206539 0.0206539 0.0206539
+Ks 0.225 0.225 0.225
+Ns 28
+Tr 0.2
+d 0.8
+Ni 1.5
+Tf 0.8 0.8 0.8
+
+newmtl VerreCoca_Verre
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 0 0 0
+Ks 0.595 0.595 0.595
+Ns 259
+Tr 0.845
+d 0.155
+Ni 1
+Tf 1 1 1
+

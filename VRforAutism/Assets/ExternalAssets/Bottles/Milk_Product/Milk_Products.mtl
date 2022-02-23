@@ -1,0 +1,83 @@
+newmtl bouchon_brique_lait
+Kd 0.9176 0.8667 0.8549
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+
+newmtl bouchon_creme
+Kd 0.6863 0.0235 0.0196
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+
+newmtl bouchon_lait
+Kd 0.0118 0.2157 0.4667
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+
+newmtl bouteille_lait_creme
+Kd 0.9176 0.8667 0.8549
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+
+newmtl brique_lait
+Kd 0.9176 0.8667 0.8549
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+map_Kd S:Bottles/Bottles/Milk_Product/brique_lait.jpg
+map_Ka S:Bottles/Bottles/Milk_Product/brique_lait.jpg
+
+newmtl etiquette_creme
+Kd 0.9176 0.8667 0.8549
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+map_Kd S:Bottles/Bottles/Milk_Product/etiquette_creme.jpg
+map_Ka S:Bottles/Bottles/Milk_Product/etiquette_creme.jpg
+
+newmtl etiquette_lait3
+Kd 0.9176 0.8667 0.8549
+Ke 0 0 0
+Ka 0.588 0.588 0.588
+Ks 0 0 0
+Ns 43
+Tr 0
+d 1
+Ni 1.56
+Tf 1 1 1
+map_Kd S:Bottles/Bottles/Milk_Product/etiquette_lait3.jpg
+map_Ka S:Bottles/Bottles/Milk_Product/etiquette_lait3.jpg
+

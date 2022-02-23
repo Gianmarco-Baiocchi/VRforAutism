@@ -1,0 +1,56 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.01.2019 09:06:59
+
+newmtl bouteille_salvetat
+	Ns 50.0000
+	Ni 1.6000
+	d 0.1700
+	Tr 0.8300
+	Tf 0.1700 0.1700 0.1700 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.2784 0.5725 0.5294
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouteille_salvetat_bump.jpg
+	bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouteille_salvetat_bump.jpg
+
+newmtl Boisson
+	Ns 50.0000
+	Ni 1.3290
+	d 0.0400
+	Tr 0.9600
+	Tf 0.0400 0.0400 0.0400 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.7176 0.9255 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl bouchon_salvetat
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.6235 0.5843 0.1098
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouchon_strie_bump.jpg
+	bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouchon_strie_bump.jpg
+
+newmtl etiquette_salvetat2
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.9176 0.8667 0.8549
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\etiquette_salvetat2.jpg
+	map_Kd S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\etiquette_salvetat2.jpg

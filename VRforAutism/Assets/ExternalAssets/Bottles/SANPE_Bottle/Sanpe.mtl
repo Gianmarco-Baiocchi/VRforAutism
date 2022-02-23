@@ -1,0 +1,84 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.01.2019 09:04:04
+
+newmtl etiquette_haut_sanpe
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.9176 0.8667 0.8549
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\etiquette_haut_sanpe.jpg
+	map_Kd S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\etiquette_haut_sanpe.jpg
+	map_d S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\etiquette_haut_sanpe_opac.jpg
+
+newmtl bouchon_sanpe
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouchon_strie_bump.jpg
+	bump S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SVT_Bottle\bouchon_strie_bump.jpg
+
+newmtl petites_etiquette_sanpe
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.9176 0.8667 0.8549
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\petite_etiquette_sanpe.jpg
+	map_Kd S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\petite_etiquette_sanpe.jpg
+	map_d S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\petite_etiquette_sanpe_transpa.jpg
+
+newmtl bouteilles_sanpe
+	Ns 50.0000
+	Ni 1.6000
+	d 0.2300
+	Tr 0.7700
+	Tf 0.2300 0.2300 0.2300 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.2863 0.0588
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl etiquette_sanpe
+	Ns 43.0000
+	Ni 1.5600
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.1922 0.0431
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\etiquette_sanpe.jpg
+	map_Kd S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\SANPE_Bottle\etiquette_sanpe.jpg
+
+newmtl Boisson
+	Ns 50.0000
+	Ni 1.3290
+	d 0.0400
+	Tr 0.9600
+	Tf 0.0400 0.0400 0.0400 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.7176 0.9255 1.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000

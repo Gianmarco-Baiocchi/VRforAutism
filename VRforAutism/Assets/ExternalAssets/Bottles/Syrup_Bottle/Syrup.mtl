@@ -1,0 +1,53 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 25.01.2019 09:07:33
+
+newmtl bouteilles_verre
+	Ns 50.0000
+	Ni 1.6000
+	d 0.0700
+	Tr 0.9300
+	Tf 0.0700 0.0700 0.0700 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.0000 0.0000 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl Syrup
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.2824 0.0118 0.0118
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl sirop_framboise
+	Ns 50.0000
+	Ni 1.3000
+	d 0.0500
+	Tr 0.9500
+	Tf 0.0500 0.0500 0.0500 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 1.0000 0.0667 0.1098
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+
+newmtl etiquette_sirop_framboise
+	Ns 50.0000
+	Ni 1.6000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.5880 0.5880 0.5880
+	Kd 0.4588 0.0549 0.0000
+	Ks 0.0000 0.0000 0.0000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\Syrup_Bottle\etiquette_sirop_framboise.jpg
+	map_Kd S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\Syrup_Bottle\etiquette_sirop_framboise.jpg
+	map_d S:\OBJETS LAETI_2018\OBJETS EN COURS\Bottles\Syrup_Bottle\etiquette_sirop_opac.jpg

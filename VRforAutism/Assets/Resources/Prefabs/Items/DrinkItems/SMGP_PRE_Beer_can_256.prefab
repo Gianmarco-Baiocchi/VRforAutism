@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _price: 0.5
-  _itemName: Beer
+  _itemName: Beer can
   category: 4
 --- !u!114 &4156240226488428912
 MonoBehaviour:
